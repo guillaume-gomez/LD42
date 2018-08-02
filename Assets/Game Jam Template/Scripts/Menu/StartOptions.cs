@@ -8,12 +8,12 @@ using UnityEngine.UI;
 public class StartOptions : MonoBehaviour {
 
 
-    public MenuSettings menuSettingsData;
+  public MenuSettings menuSettingsData;
 	public int sceneToStart = 1;										//Index number in build settings of scene to load if changeScenes is true
 	public bool changeScenes;											//If true, load a new scene when Start is pressed, if false, fade out UI and continue in single scene
 	public bool changeMusicOnStart;										//Choose whether to continue playing menu music or start a new music clip
-    public CanvasGroup fadeOutImageCanvasGroup;                         //Canvas group used to fade alpha of image which fades in before changing scenes
-    public Image fadeImage;                                             //Reference to image used to fade out before changing scenes
+  public CanvasGroup fadeOutImageCanvasGroup;                         //Canvas group used to fade alpha of image which fades in before changing scenes
+  public Image fadeImage;                                             //Reference to image used to fade out before changing scenes
 
 	[HideInInspector] public bool inMainMenu = true;					//If true, pause button disabled in main menu (Cancel in input manager, default escape key)
 	[HideInInspector] public AnimationClip fadeAlphaAnimationClip;		//Animation clip fading out UI elements alpha
@@ -22,7 +22,7 @@ public class StartOptions : MonoBehaviour {
 	private PlayMusic playMusic;										//Reference to PlayMusic script
 	private float fastFadeIn = .01f;									//Very short fade time (10 milliseconds) to start playing music immediately without a click/glitch
 	private ShowPanels showPanels;										//Reference to ShowPanels script on UI GameObject, to show and hide panels
-    private CanvasGroup menuCanvasGroup;
+  private CanvasGroup menuCanvasGroup;
 
 
     void Awake()
@@ -44,23 +44,23 @@ public class StartOptions : MonoBehaviour {
 	{
 		//If changeMusicOnStart is true, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic
 		//To change fade time, change length of animation "FadeToColor"
-		if (menuSettingsData.musicLoopToChangeTo != null) 
+		if (menuSettingsData.musicLoopToChangeTo != null)
 		{
 			playMusic.FadeDown(menuSettingsData.menuFadeTime);
 		}
 
 		//If changeScenes is true, start fading and change scenes halfway through animation when screen is blocked by FadeImage
-		if (menuSettingsData.nextSceneIndex != 0) 
+		if (menuSettingsData.nextSceneIndex != 0)
 		{
 			//Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
 			Invoke ("LoadDelayed", menuSettingsData.menuFadeTime);
 
             StartCoroutine(FadeCanvasGroupAlpha(0f, 1f, fadeOutImageCanvasGroup));
 
-        } 
+        }
 
 		//If changeScenes is false, call StartGameInScene
-		else 
+		else
 		{
 			//Call the StartGameInScene function to start game without loading a new scene.
 			StartGameInScene();
@@ -85,7 +85,7 @@ public class StartOptions : MonoBehaviour {
 		if (menuSettingsData.musicLoopToChangeTo != null)
 		{
 			playMusic.PlayLevelMusic ();
-		}	
+		}
 	}
 
 
@@ -113,12 +113,11 @@ public class StartOptions : MonoBehaviour {
 		inMainMenu = false;
 
 		//If there is a second music clip in MenuSettings, fade out volume of music group of AudioMixer by calling FadeDown function of PlayMusic 
-		if (menuSettingsData.musicLoopToChangeTo != null) 
+		if (menuSettingsData.musicLoopToChangeTo != null)
 		{
 			//Wait until game has started, then play new music
 			Invoke ("PlayNewMusic", menuSettingsData.menuFadeTime);
 		}
-        
         StartCoroutine(FadeCanvasGroupAlpha(1f,0f, menuCanvasGroup));
 	}
 
@@ -143,7 +142,7 @@ public class StartOptions : MonoBehaviour {
 
     public void PlayNewMusic()
 	{
-		//Fade up music nearly instantly without a click 
+		//Fade up music nearly instantly without a click
 		playMusic.FadeUp (fastFadeIn);
 		//Play second music clip from MenuSettings
 		playMusic.PlaySelectedMusic (menuSettingsData.musicLoopToChangeTo);
