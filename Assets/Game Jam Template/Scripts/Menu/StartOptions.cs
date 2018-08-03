@@ -49,16 +49,14 @@ public class StartOptions : MonoBehaviour {
 			playMusic.FadeDown(menuSettingsData.menuFadeTime);
 		}
 
-		//If changeScenes is true, start fading and change scenes halfway through animation when screen is blocked by FadeImage
+    //If changeScenes is true, start fading and change scenes halfway through animation when screen is blocked by FadeImage
 		if (menuSettingsData.nextSceneIndex != 0)
 		{
-			//Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
+      //Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
 			Invoke ("LoadDelayed", menuSettingsData.menuFadeTime);
+      StartCoroutine(FadeCanvasGroupAlpha(0f, 1f, fadeOutImageCanvasGroup));
 
-            StartCoroutine(FadeCanvasGroupAlpha(0f, 1f, fadeOutImageCanvasGroup));
-
-        }
-
+    }
 		//If changeScenes is false, call StartGameInScene
 		else
 		{
