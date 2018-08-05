@@ -23,7 +23,6 @@ public class Pause : MonoBehaviour {
 		//Check if the Cancel button in Input Manager is down this frame (default is Escape key) and that game is not paused, and that we're not in main menu
 		if (Input.GetButtonDown ("Cancel") && !isPaused && !startScript.inMainMenu) 
 		{
-            Debug.Log("pausing");
 			//Call the DoPause function to pause the game
 			DoPause();
 		} 
