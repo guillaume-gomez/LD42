@@ -62,6 +62,9 @@ public class Player : MonoBehaviour {
     {
       grounded = true;
     }
+    if(other.gameObject.tag == "Enemy") {
+      animator.SetBool("hurt", true);
+    }
   }
 
   void OnCollisionExit2D(Collision2D other) {
@@ -70,7 +73,6 @@ public class Player : MonoBehaviour {
       grounded = false;
     }
   }
-
 
   void Update () {
  /*   Vector2 move = Vector2.zero;
