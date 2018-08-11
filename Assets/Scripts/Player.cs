@@ -24,8 +24,8 @@ public class Player : MonoBehaviour {
     rb2D = gameObject.GetComponent<Rigidbody2D>();
   }
 
-	// Use this for initialization
-	void Start () {
+  // Use this for initialization
+  void Start () {
         center = GameObject.FindGameObjectsWithTag("Gravity")[0];
     }
 
@@ -50,7 +50,6 @@ public class Player : MonoBehaviour {
             //startJump = true;
         }
         //GetComponent<Rigidbody2D>().velocity = newVel;
-    
         if(move > 0 && !facingRight || move < 0 && facingRight) {
             Flip();
         }
@@ -86,7 +85,6 @@ public class Player : MonoBehaviour {
   void Update () {
  /*   Vector2 move = Vector2.zero;
     move.x = Input.GetAxis("Horizontal");
-
     bool flipSprite = spriteRenderer.flipX ? (move.x > 0.00f) : (move.x < 0.00f);
     if (flipSprite) {
       spriteRenderer.flipX = !spriteRenderer.flipX;
@@ -95,5 +93,5 @@ public class Player : MonoBehaviour {
     //animator.SetBool("grounded", grounded);
     animator.SetFloat ("velocityX", Mathf.Abs (move.x));*/
     //this.transform.Rotate(0,0, Input.GetAxis("Horizontal") * speed);
-	}
+  }
 }
