@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class IAbstractPlatform : MonoBehaviour {
-    public SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
     public bool active;
 	// Use this for initialization
 	void Start () {
@@ -11,7 +11,7 @@ public abstract class IAbstractPlatform : MonoBehaviour {
 
         spriteRenderer.enabled = active;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         Debug.Log("Updating plateform");
