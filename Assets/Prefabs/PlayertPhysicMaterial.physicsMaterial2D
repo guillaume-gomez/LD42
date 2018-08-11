@@ -5,6 +5,6 @@ PhysicsMaterial2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: DefaultPhysicMaterial
-  friction: 0.4
+  m_Name: PlayertPhysicMaterial
+  friction: 0.02
   bounciness: 0

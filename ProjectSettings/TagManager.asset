@@ -7,6 +7,7 @@ TagManager:
   - FakeBlock
   - Floor
   - Enemy
+  - Gravity
   layers:
   - Default
   - TransparentFX

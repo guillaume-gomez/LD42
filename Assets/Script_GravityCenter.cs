@@ -5,7 +5,7 @@ using UnityEngine;
 public class Script_GravityCenter : MonoBehaviour {
 
     private List<GameObject> elems = new List<GameObject>();
-    private float pullForce = 50000f;
+    private float pullForce = 100000f;
 
     // Use this for initialization
     void Start () {
