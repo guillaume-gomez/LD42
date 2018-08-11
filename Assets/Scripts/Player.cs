@@ -11,7 +11,8 @@ public class Player : MonoBehaviour {
   bool grounded = false;
   private GameObject center;
 
-  private float moveSpeed = 20000f;
+  public float moveSpeed = 20000f;
+    public float jumpSpeed = 200000f;
 
   protected Animator animator;
   protected SpriteRenderer spriteRenderer;
@@ -30,17 +31,20 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate() {
         float move = Input.GetAxis("Horizontal");
-        //Vector2 newVel = new Vector2(move * topSpeed, GetComponent<Rigidbody2D>().velocity.y);
-        float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        Vector3 addX = transform.right * moveX;
-        Vector3 forceDirection =  transform.position - center.transform.position;
-        GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity / 1.5f;
-        GetComponent<Rigidbody2D>().AddForce(forceDirection.normalized * 85000f * Time.fixedDeltaTime);
-        GetComponent<Rigidbody2D>().AddForce(addX);
+        Vector3 forceDirection = transform.position - center.transform.position;
 
+        if (Input.GetAxis("Horizontal") != 0f)
+        {
+            //Vector2 newVel = new Vector2(move * topSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+            Vector3 addX = transform.right * moveX;
+            GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity / 1.5f;
+            GetComponent<Rigidbody2D>().AddForce(forceDirection.normalized * 85000f * Time.fixedDeltaTime);
+            GetComponent<Rigidbody2D>().AddForce(addX);
+        }
         //bool startJump = false;
         if (Input.GetButtonDown("Jump")) {
-            GetComponent<Rigidbody2D>().AddForce(forceDirection.normalized * 200000f * Time.fixedDeltaTime);
+            GetComponent<Rigidbody2D>().AddForce(forceDirection.normalized * jumpSpeed * Time.fixedDeltaTime);
             //SoundManager.instance.PlaySingle(jumpSound);
             //newVel.y = jumpTakeOffSpeed;
             //startJump = true;
@@ -62,6 +66,7 @@ public class Player : MonoBehaviour {
   }
 
   void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log(other.gameObject.name);
     if(other.gameObject.name == "ground")
     {
       grounded = true;
