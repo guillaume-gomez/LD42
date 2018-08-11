@@ -7,7 +7,11 @@ TagManager:
   - FakeBlock
   - Floor
   - Enemy
+<<<<<<< HEAD
+  - Gravity
+=======
   - Portal
+>>>>>>> 5c5cbfdf17c7ba49c7f99f9a185abd737bc307f1
   layers:
   - Default
   - TransparentFX
