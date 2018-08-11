@@ -58,19 +58,26 @@ public class Layer : MonoBehaviour {
         rules.UpdateState();
 
         if (active && rules.ShouldRespawn()) {
-            int toBeActivated = Mathf.RoundToInt(Random.Range(0, GetInactivePlateformsNumber()));
+            ArrayList plateformIndexes = GetInactivePlateformsIndexes();
 
-            plateforms[toBeActivated].Activate();
-            rules.AsRespawn();
+            if (plateformIndexes.Count > 0) {
+                int toBeActivated = Mathf.RoundToInt(Random.Range(0, plateformIndexes.Count));
+
+                plateforms[(uint)plateformIndexes[toBeActivated]].Activate();
+                rules.AsRespawn();
+            }
         }
 	}
 
-    uint GetInactivePlateformsNumber() {
-        uint ret = 0;
+    ArrayList GetInactivePlateformsIndexes() {
+        uint index = 0;
+        ArrayList ret = new ArrayList();
 
-        foreach (IAbstractPlatform plat in plateforms)
+        foreach (IAbstractPlatform plat in plateforms) {
             if (!plat.active)
-                ++ret;
+                ret.Add(index);
+            ++index;
+        }
         return ret;
     }
     public void Activate() { active = true; }
