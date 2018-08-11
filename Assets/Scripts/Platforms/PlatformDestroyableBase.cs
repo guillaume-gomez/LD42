@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlatformDestroyableBase : IAbstractPlatform
 {
+    public AudioClip destroyedSound;
     protected Animator animator;
 
     public override void Start() {
       base.Start();
+      Invoke("PerformDestroyAnim", 3f);
       animator = GetComponent<Animator>();
     }
 
@@ -27,6 +29,7 @@ public class PlatformDestroyableBase : IAbstractPlatform
     }
 
     void PerformDestroyAnim() {
+      SoundManager.instance.PlaySingle(destroyedSound);
       animator.SetBool("destroyed", true);
       Invoke("Deactivate", 0.6f);
     }
