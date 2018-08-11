@@ -660,6 +660,26 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114853388635588950, guid: 220a0406324ae7343b63d4821a1899dc,
+        type: 2}
+      propertyPath: jumpSpeed
+      value: 13000
+      objectReference: {fileID: 0}
+    - target: {fileID: 58316549404038874, guid: 220a0406324ae7343b63d4821a1899dc,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 58316549404038874, guid: 220a0406324ae7343b63d4821a1899dc,
+        type: 2}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58316549404038874, guid: 220a0406324ae7343b63d4821a1899dc,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 220a0406324ae7343b63d4821a1899dc, type: 2}
   m_IsPrefabAsset: 0
@@ -1753,6 +1773,11 @@ Prefab:
     - target: {fileID: 4455558434064482, guid: 68961b98fdc32144094d141151f779e8, type: 2}
       propertyPath: m_LocalScale.y
       value: 0.9973
+      objectReference: {fileID: 0}
+    - target: {fileID: 114588741329667590, guid: 68961b98fdc32144094d141151f779e8,
+        type: 2}
+      propertyPath: pullForce
+      value: 5000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68961b98fdc32144094d141151f779e8, type: 2}
