@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  destroyedSound: {fileID: 8300000, guid: b0090f1352f79904483df8f24e9da1a5, type: 3}
 --- !u!212 &212294741710852170
 SpriteRenderer:
   m_ObjectHideFlags: 1
