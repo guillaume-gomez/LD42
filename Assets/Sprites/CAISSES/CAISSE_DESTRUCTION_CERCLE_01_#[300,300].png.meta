@@ -1,7 +1,65 @@
 fileFormatVersion: 2
 guid: 2be53124fb6d65c4a8ab493932e40a8f
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_0
+    21300002: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_1
+    21300004: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_2
+    21300006: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_3
+    21300008: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_4
+    21300010: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_5
+    21300012: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_6
+    21300014: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_7
+    21300016: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_8
+    21300018: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_9
+    21300020: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_10
+    21300022: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_11
+    21300024: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_12
+    21300026: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_13
+    21300028: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_14
+    21300030: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_15
+    21300032: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_16
+    21300034: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_17
+    21300036: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_18
+    21300038: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_19
+    21300040: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_20
+    21300042: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_21
+    21300044: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_22
+    21300046: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_23
+    21300048: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_24
+    21300050: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_25
+    21300052: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_26
+    21300054: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_27
+    21300056: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_28
+    21300058: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_29
+    21300060: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_30
+    21300062: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_31
+    21300064: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_32
+    21300066: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_33
+    21300068: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_34
+    21300070: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_35
+    21300072: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_36
+    21300074: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_37
+    21300076: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_38
+    21300078: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_39
+    21300080: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_40
+    21300082: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_41
+    21300084: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_42
+    21300086: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_43
+    21300088: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_44
+    21300090: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_45
+    21300092: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_46
+    21300094: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_47
+    21300096: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_48
+    21300098: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_49
+    21300100: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_50
+    21300102: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_51
+    21300104: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_52
+    21300106: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_53
+    21300108: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_54
+    21300110: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_55
+    21300112: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_56
+    21300114: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_57
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -40,7 +98,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -63,7 +121,29 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -71,7 +151,167 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e89acad5aacc394419ab321a9671fd88
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 900
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26af0139bc0a3384d8b5d5c77c3c298d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc41c7833b77d3043963bbadbdaca4b1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d13ff5ad9a93c428698df763751782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa90fdf4febbea43a69a93f3ddce930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_5
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 300
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57508ba8faf021c4895645fa2a5e1efb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ebdfe8a3d0956409afaab4df26b34c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAISSE_DESTRUCTION_CERCLE_01_#[300,300]_7
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c8450bb8218b749b62fc7e4b8dc748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

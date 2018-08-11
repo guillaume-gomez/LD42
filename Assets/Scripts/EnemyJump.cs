@@ -17,7 +17,6 @@ public class EnemyJump : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-
     if(grounded) {
       Vector2 vec = new Vector2(0.0f, maxJump * 5.0f);
       rb2D.AddForce(vec);

@@ -6,7 +6,7 @@ public abstract class IAbstractPlatform : MonoBehaviour {
     protected SpriteRenderer spriteRenderer;
     public bool active;
 	// Use this for initialization
-	void Start () {
+	public virtual void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         spriteRenderer.enabled = active;
@@ -14,7 +14,7 @@ public abstract class IAbstractPlatform : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("Updating plateform");
+        //Debug.Log("Updating plateform");
     }
 
     abstract public void Activate();
