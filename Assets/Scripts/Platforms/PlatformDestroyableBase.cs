@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class PlatformDestroyableBase : IAbstractPlatform
 {
+    public AudioClip destroyedSound;
     protected Animator animator;
 
     public override void Start() {
       base.Start();
+      Invoke("PerformDestroyAnim", 3f);
       animator = GetComponent<Animator>();
     }
 
     public override void Activate() {
         base.active = true;
         base.spriteRenderer.enabled = true;
+
+        foreach (Collider2D collider in base.colliders)
+            collider.enabled = true;
     }
     public override void Deactivate() {
       base.active = false;
       base.spriteRenderer.enabled = false;
+
+      foreach (Collider2D collider in base.colliders)
+          collider.enabled = false;
     }
 
     void PerformDestroyAnim() {
+      SoundManager.instance.PlaySingle(destroyedSound);
       animator.SetBool("destroyed", true);
       Invoke("Deactivate", 0.6f);
     }
