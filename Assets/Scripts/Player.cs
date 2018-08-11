@@ -5,11 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
   protected float speed = 1.0f;
-  public float topSpeed = 7f;
+  public float topSpeed = 7000f;
   public float jumpTakeOffSpeed = 7f;
   bool facingRight = true;
   bool grounded = false;
 
+  private float moveSpeed = 20000f;
 
   protected Animator animator;
   protected SpriteRenderer spriteRenderer;
@@ -29,16 +30,19 @@ public class Player : MonoBehaviour {
   void FixedUpdate()
   {
     float move = Input.GetAxis("Horizontal");
-    Vector2 newVel = new Vector2(move * topSpeed, GetComponent<Rigidbody2D>().velocity.y);
-
+    //Vector2 newVel = new Vector2(move * topSpeed, GetComponent<Rigidbody2D>().velocity.y);
+    float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+    Vector3 addX = transform.right * moveX;
+    
     //bool startJump = false;
     if(Input.GetButtonDown("Jump") && grounded) {
       //SoundManager.instance.PlaySingle(jumpSound);
       newVel.y = jumpTakeOffSpeed;
       //startJump = true;
     }
-    GetComponent<Rigidbody2D>().velocity = newVel;
-
+    //GetComponent<Rigidbody2D>().velocity = newVel;
+    GetComponent<Rigidbody2D>().AddForce(addX);
+    
     if(move > 0 && !facingRight || move < 0 && facingRight) {
       Flip();
     }
