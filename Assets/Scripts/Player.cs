@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
     //bool startJump = false;
     if(Input.GetButtonDown("Jump") && grounded) {
       //SoundManager.instance.PlaySingle(jumpSound);
-      newVel.y = jumpTakeOffSpeed;
+      //newVel.y = jumpTakeOffSpeed;
       //startJump = true;
     }
     //GetComponent<Rigidbody2D>().velocity = newVel;
