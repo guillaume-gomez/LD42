@@ -9,43 +9,43 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1055270672256732}
+  m_RootGameObject: {fileID: 1648886806214206}
   m_IsPrefabAsset: 1
---- !u!1 &1055270672256732
+--- !u!1 &1648886806214206
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4216635526945460}
-  - component: {fileID: 212202855617914734}
+  - component: {fileID: 4966089692857920}
+  - component: {fileID: 212350420404598272}
   m_Layer: 0
-  m_Name: test
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4216635526945460
+--- !u!4 &4966089692857920
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1055270672256732}
+  m_GameObject: {fileID: 1648886806214206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.168226, y: 3.8790264, z: -0.122420006}
+  m_LocalPosition: {x: -2.0303276, y: 3.9622433, z: 0.21972656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &212202855617914734
+--- !u!212 &212350420404598272
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1055270672256732}
+  m_GameObject: {fileID: 1648886806214206}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
