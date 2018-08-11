@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50777802102747990}
   - component: {fileID: 114853388635588950}
   - component: {fileID: 58316549404038874}
+  - component: {fileID: 70904982868746866}
   m_Layer: 0
   m_Name: Player_Gravity
   m_TagString: Player
@@ -106,9 +107,24 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.9}
   serializedVersion: 2
-  m_Radius: 1.3
+  m_Radius: 0.4
+--- !u!70 &70904982868746866
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1325854273208788}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.2}
+  m_Size: {x: 2.56, y: 2.1}
+  m_Direction: 0
 --- !u!95 &95918300505266718
 Animator:
   serializedVersion: 3
@@ -138,8 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3b8f6b1389ece49ad9b0ac2bd70fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topSpeed: 10
-  jumpTakeOffSpeed: 7
   moveSpeed: 5000
   jumpSpeed: 150000
 --- !u!212 &212714364104502848

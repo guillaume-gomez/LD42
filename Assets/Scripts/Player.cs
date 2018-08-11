@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
     bool grounded = false;
 
     private GameObject center;
-    public const float jumpBaseTimer = 0.3f;
+    public const float jumpBaseTimer = 0.5f;
     private float jumpTimer = 0f;
     public float moveSpeed = 20000f;
     public float jumpSpeed = 1f;
@@ -71,14 +71,15 @@ public class Player : MonoBehaviour {
   }
 
   void OnCollisionEnter2D(Collision2D collision) {
-    //if(other.gameObject.name == "ground")
-    //{
-    //  grounded = true;
-    //}
+        if (this.GetComponent<CircleCollider2D>().OverlapPoint(collision.GetContact(0).point)) {
+            Debug.Log("RESET");
+            jumpTimer = -1f;
+            grounded = true;
+        }
     //if(other.gameObject.tag == "Enemy") {
     //  animator.SetBool("hurt", true);
     //}
-  }
+    }
 
   void OnCollisionExit2D(Collision2D other) {
     if(other.gameObject.name == "ground")
