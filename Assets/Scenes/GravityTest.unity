@@ -132,7 +132,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.4
+  m_Radius: 1.3
 --- !u!4 &379013822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4604423264519652, guid: 6bcff8c599fd9174ab33ab9891e6f00f,
