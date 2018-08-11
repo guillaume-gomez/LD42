@@ -19,7 +19,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4480065846010458}
-  - component: {fileID: 212718080654770534}
+  - component: {fileID: 114655864792845404}
+  - component: {fileID: 212900096267834260}
   m_Layer: 0
   m_Name: Layer
   m_TagString: Untagged
@@ -40,7 +41,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &212718080654770534
+--- !u!114 &114655864792845404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945495693817960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95615c2df52f01147b085b8fe5c54525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plateforms: []
+  rules:
+    timeToRespawn: 0
+    minRespawnSpeed: 0
+    timeToDecreaseSpawnTime: 0
+    decreaseStep: 0
+  active: 0
+--- !u!212 &212900096267834260
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
