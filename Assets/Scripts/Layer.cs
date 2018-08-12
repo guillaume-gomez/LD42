@@ -18,6 +18,8 @@ public class LayerRulesAndState
     float lastRespawn = 0.0f;
     float lastUpdate = 0.0f;
 
+    public string layerType = "";
+
     public void UpdateState()
     {
         lastUpdate += Time.deltaTime;
