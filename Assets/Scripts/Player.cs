@@ -31,24 +31,24 @@ public class Player : MonoBehaviour {
         float move = Input.GetAxis("Horizontal");
         Vector3 forceDirection = transform.position - center.transform.position;
 
-        GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity / 1.5f;
+        rb2D.velocity = rb2D.velocity / 1.5f;
 
         if (Input.GetAxis("Horizontal") != 0f)
         {
             float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
             Vector3 addX = transform.right * moveX;
-            GetComponent<Rigidbody2D>().AddForce(addX);
+            rb2D.AddForce(addX);
         }
         if (Input.GetButtonDown("Jump") && jumpTimer <= 0f) {
             //animator.SetBool("startJump", startJump);
             jumpTimer = jumpBaseTimer;
         }
 
-        GetComponent<Rigidbody2D>().AddForce(forceDirection.normalized * 1f * Time.fixedDeltaTime);
+        rb2D.AddForce(forceDirection.normalized * 1f * Time.fixedDeltaTime);
         if (jumpTimer > 0f) {
             jumpTimer -= Time.deltaTime;
             if (Input.GetButton("Jump")) {
-                GetComponent<Rigidbody2D>().AddForce(forceDirection.normalized * (jumpSpeed * (jumpTimer / jumpBaseTimer)) * Time.fixedDeltaTime);
+                rb2D.AddForce(forceDirection.normalized * (jumpSpeed * (jumpTimer / jumpBaseTimer)) * Time.fixedDeltaTime);
             }
         }
 
