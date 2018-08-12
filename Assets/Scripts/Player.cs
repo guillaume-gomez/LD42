@@ -52,7 +52,7 @@ public class Player : MonoBehaviour {
         if (distToCenter == newDist && !Input.GetButtonDown("Jump")) {
             grounded = true;
             jumpTimer = -1f;
-            if (Input.GetAxisRaw("Vertical") < 0f) {
+            if (Input.GetAxisRaw("Vertical") < 0f && grounded) {
                 SwitchAnimeState(3);
             }
             else if (Input.GetAxisRaw("Horizontal") == 0f) {
