@@ -79,7 +79,7 @@ using UnityEngine.SceneManagement;
 
         public void GameOver(string message) {
             doingSetup = true;
-            Invoke("ReloadLevel", 3f);
+            Invoke("ReloadLevel", 1f);
         }
 
         private void ReloadLevel() {
