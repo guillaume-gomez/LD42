@@ -6,6 +6,8 @@ public abstract class IAbstractPlatform : MonoBehaviour {
     protected SpriteRenderer spriteRenderer;
     protected Collider2D[] colliders;
     public bool active;
+    public bool breakable;
+
 	// Use this for initialization
 	public virtual void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();

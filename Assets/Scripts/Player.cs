@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
     protected CapsuleCollider2D bodyColliderHor;
     protected int animeState = 0; //IDLE /RUN /JUMP /Slide
     protected float distToCenter = 0;
-    
+
     protected virtual void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -41,21 +41,26 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (!GameManager.instance.doingSetup)
-            return ;
+        if (GameManager.instance.doingSetup) {
+            return;
+        }
+
         float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
         float move = Input.GetAxis("Horizontal");
         Vector3 forceDirection = transform.position - center.transform.position;
-        
+
         if (distToCenter == newDist && !Input.GetButtonDown("Jump")) {
             grounded = true;
             jumpTimer = -1f;
-            if (Input.GetAxisRaw("Vertical") < 0f) 
+            if (Input.GetAxisRaw("Vertical") < 0f) {
                 SwitchAnimeState(3);
-            else if (Input.GetAxisRaw("Horizontal") == 0f)
+            }
+            else if (Input.GetAxisRaw("Horizontal") == 0f) {
                 SwitchAnimeState(0);
-            else
+            }
+            else {
                 SwitchAnimeState(1);
+            }
         }
         distToCenter = newDist;
 
@@ -109,7 +114,7 @@ public class Player : MonoBehaviour {
             grounded = true;
         }
 
-        if(collision.gameObject.tag == "Enemy") {
+        if(collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser") {
           GameManager.instance.GameOver("player_die");
           //animation hurt
           //Destroy(gameObject);
