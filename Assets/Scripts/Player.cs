@@ -19,8 +19,9 @@ public class Player : MonoBehaviour {
     protected CircleCollider2D footCollider;
     protected CapsuleCollider2D bodyColliderVer;
     protected CapsuleCollider2D bodyColliderHor;
-    protected int animeState = 0; //IDLE /RUN /JUMP /Slide
+    protected int animeState = 0; //IDLE /RUN /JUMP /SLIDE /PUNCH
     protected float distToCenter = 0;
+    protected float atkTimer = 0f;
 
     protected virtual void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,24 +42,28 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        //if (!GameManager.instance.doingSetup) {
+        //if (GameManager.instance.doingSetup) {
         //    return;
         //}
 
         float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
         float move = Input.GetAxis("Horizontal");
         Vector3 forceDirection = transform.position - center.transform.position;
-        Debug.Log(newDist);
         if (distToCenter == newDist && !Input.GetButtonDown("Jump")) {
             grounded = true;
             jumpTimer = -1f;
-            if (Input.GetAxisRaw("Vertical") < 0f && grounded) {
+            if (atkTimer > 0)
+                SwitchAnimeState(4);
+            else if (Input.GetAxisRaw("Vertical") < 0f && grounded)
+            {
                 SwitchAnimeState(3);
             }
-            else if (Input.GetAxisRaw("Horizontal") == 0f) {
+            else if (Input.GetAxisRaw("Horizontal") == 0f)
+            {
                 SwitchAnimeState(0);
             }
-            else {
+            else
+            {
                 SwitchAnimeState(1);
             }
         }
@@ -91,6 +96,14 @@ public class Player : MonoBehaviour {
         if (move > 0 && !facingRight || move < 0 && facingRight) {
             Flip();
         }
+
+        if (Input.GetButtonDown("Fire3") && atkTimer <= 0f) {
+            atkTimer = 0.3f;
+        }
+
+        if (atkTimer >= 0f)
+            atkTimer -= Time.deltaTime;
+
         animator.SetBool("grounded", grounded);
         animator.SetFloat ("velocityX", Mathf.Abs (move));
     }
@@ -173,6 +186,29 @@ public class Player : MonoBehaviour {
                     bodyColliderHor.offset.Set(0f, -0.3f);
                     bodyColliderHor.size.Set(0.6f, 0.1f);
                     footCollider.offset.Set(0f, -0.3213656f);
+                    break;
+
+                case 4:
+                    if (Random.Range(0, 2) % 2 == 0)
+                    {
+                        animator.Play("PunchPlayer");
+                        bodyColliderVer.enabled = false;
+                        bodyColliderHor.enabled = true;
+
+                        bodyColliderHor.offset.Set(0.1f, -0.1f);
+                        bodyColliderHor.size.Set(0.6f, 0.3f);
+                        footCollider.offset.Set(0f, -0.3213656f);
+
+                    }
+                    else {
+                        animator.Play("PunchPlayer1");
+                        bodyColliderVer.enabled = true;
+                        bodyColliderHor.enabled = false;
+
+                        bodyColliderVer.offset.Set(0.05f, 0f);
+                        bodyColliderVer.size.Set(0.3f, 0.5f);
+                        footCollider.offset.Set(0f, -0.3213656f);
+                    }
                     break;
 
                 default:
