@@ -16,7 +16,7 @@ public class PlatformManager : MonoBehaviour {
         playerLayer = layerIndex;
 
         for (uint i = 0; i < layers.Length; i++) {
-            if (i == playerLayer)
+            if (layers[i].index == playerLayer)
                 layers[i].Activate();
             else
                 layers[i].Deactivate();

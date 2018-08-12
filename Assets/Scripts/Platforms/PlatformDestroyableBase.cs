@@ -10,7 +10,6 @@ public class PlatformDestroyableBase : IAbstractPlatform
     public override void Start() {
       base.Start();
       animator = GetComponent<Animator>();
-      Invoke("PerformDestroyAnim", 3f);
     }
 
     public override void Activate() {
