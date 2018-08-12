@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61614359964765066}
   - component: {fileID: 114326333130255004}
   m_Layer: 0
-  m_Name: Portal
+  m_Name: PortalVideo
   m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalTarget: {fileID: 0}
   layer: 0
-  platformManager: {fileID: 0}
+  platformManager: {fileID: 114685218311707880, guid: 213cf4912c1ee9a4b9bfadf665f21cef,
+    type: 2}
   resetTimer: 3
   lastReset: 3
 --- !u!212 &212307378561010676

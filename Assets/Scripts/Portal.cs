@@ -8,6 +8,7 @@ public class Portal : MonoBehaviour {
     public PlatformManager platformManager;
     public float resetTimer = 3f;
     public float lastReset = 3f;
+    public bool triggerLevelEnd = false;
 
     private void Update()
     {

@@ -34,8 +34,10 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        float move = Input.GetAxis("Horizontal"); 
+       // if (!GameManager.instance.doingSetup)
+       //     return ;
         float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
+        float move = Input.GetAxis("Horizontal");
         Vector3 forceDirection = transform.position - center.transform.position;
         
         if (distToCenter == newDist && !Input.GetButtonDown("Jump")) {
@@ -77,8 +79,8 @@ public class Player : MonoBehaviour {
         if (move > 0 && !facingRight || move < 0 && facingRight) {
             Flip();
         }
-        //animator.SetBool("grounded", grounded);
-        //animator.SetFloat ("velocityX", Mathf.Abs (move));
+        animator.SetBool("grounded", grounded);
+        animator.SetFloat ("velocityX", Mathf.Abs (move));
     }
 
     void GroundCollision(Collision2D other)

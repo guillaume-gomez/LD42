@@ -9,18 +9,25 @@ public class Script_GravityCenter : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        GameObject[] items = GameObject.FindGameObjectsWithTag("Player");
-        int i = 0;
-        while (i < items.Length)
+        string[] tags =
         {
-            elems.Add(items[i].gameObject);
-            ++i;
+         "Player",
+         "Enemy"
+        };
+        foreach (string tag in tags)
+        {
+            GameObject[] items = GameObject.FindGameObjectsWithTag(tag);
+            foreach (GameObject gameObj in items)
+            {
+                //elems.Add(gameObj.gameObject);
+                elems.Add(gameObj);
+            }
+
         }
     }
-	
+
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
     void FixedUpdate()
@@ -34,7 +41,7 @@ public class Script_GravityCenter : MonoBehaviour {
                 elem.transform.eulerAngles = new Vector3(0,0, Mathf.Rad2Deg * Mathf.Acos(-forceDirectionN.y / (Mathf.Sqrt(Mathf.Pow(forceDirectionN.x, 2) + Mathf.Pow(forceDirectionN.y, 2)))));
             else
                 elem.transform.eulerAngles = new Vector3(0, 0, -Mathf.Rad2Deg * Mathf.Acos(-forceDirectionN.y / (Mathf.Sqrt(Mathf.Pow(forceDirectionN.x, 2) + Mathf.Pow(forceDirectionN.y, 2)))));
-        } 
+        }
 
     }
 }
