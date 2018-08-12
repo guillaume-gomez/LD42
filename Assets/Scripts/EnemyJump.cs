@@ -20,10 +20,12 @@ public class EnemyJump : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-    if(grounded) {
-      Vector3 forceDirection = transform.position - center.transform.position;
-      rb2D.AddForce(forceDirection.normalized * maxJump);
-      grounded = false;
+    if(!GameManager.instance.doingSetup){
+      if(grounded) {
+        Vector3 forceDirection = transform.position - center.transform.position;
+        rb2D.AddForce(forceDirection.normalized * maxJump);
+        grounded = false;
+      }
     }
   }
 
