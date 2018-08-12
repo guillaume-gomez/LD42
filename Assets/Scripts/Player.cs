@@ -34,8 +34,8 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
-       // if (!GameManager.instance.doingSetup)
-       //     return ;
+        if (!GameManager.instance.doingSetup)
+            return ;
         float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
         float move = Input.GetAxis("Horizontal");
         Vector3 forceDirection = transform.position - center.transform.position;
@@ -95,24 +95,22 @@ public class Player : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        //if (footCollider.OverlapPoint(collision.GetContact(0).point)) {
-        //    jumpTimer = -1f;
-        //    grounded = true;
-        //    SwitchAnimeState(0);
-        //    Debug.Log("TRIGGER");
-        //}
-        //if(other.gameObject.tag == "Enemy") {
-        //  animator.SetBool("hurt", true);
-        //}
+
+        if (rb2D.OverlapPoint(collision.GetContact(0).point)) {
+            Debug.Log("RESET");
+            jumpTimer = -1f;
+            grounded = true;
+        }
+
+        if(collision.gameObject.tag == "Enemy") {
+          GameManager.instance.GameOver("player_die");
+          //animation hurt
+          //Destroy(gameObject);
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        //if (footCollider.OverlapPoint(collision.GetContact(0).point) && (Input.GetAxisRaw("Horizontal") == 0f)) {
-        //    Debug.Log("STAY");
-        //    grounded = true;
-        //    SwitchAnimeState(0);
-        //}
     }
 
     void OnCollisionExit2D(Collision2D other) {
