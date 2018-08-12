@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ce9cf6c2d159944ac622652acde9c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
+  breakable: 1
   destroyedSound: {fileID: 8300000, guid: 12529fac1e0d5e74f95839d58d8ed4b7, type: 3}
 --- !u!212 &212902505607327556
 SpriteRenderer:
