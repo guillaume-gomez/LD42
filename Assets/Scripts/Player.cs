@@ -19,9 +19,11 @@ public class Player : MonoBehaviour {
     protected CircleCollider2D footCollider;
     protected CapsuleCollider2D bodyColliderVer;
     protected CapsuleCollider2D bodyColliderHor;
-    protected int animeState = 0; //IDLE /RUN /JUMP /SLIDE /PUNCH
+    public int animeState = 0; //IDLE /RUN /JUMP /SLIDE /PUNCH
     protected float distToCenter = 0;
     protected float atkTimer = 0f;
+
+    private bool stopAnimations = false;
 
     protected virtual void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -128,6 +130,7 @@ public class Player : MonoBehaviour {
         }
 
         if(collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser") {
+          onDeath();
           GameManager.instance.GameOver("player_die");
           //animation hurt
           //Destroy(gameObject);
@@ -144,8 +147,13 @@ public class Player : MonoBehaviour {
     void Update () {
     }
 
+    public void onDeath() {
+        animator.Play("PlayerDeath1");
+        stopAnimations = true;
+    }
+
     void SwitchAnimeState(int change) {
-        if (animeState != change) {
+        if (!stopAnimations && animeState != change) {
             animeState = change;
             switch(animeState) {
                 case 0:
