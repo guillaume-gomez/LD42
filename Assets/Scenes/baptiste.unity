@@ -463,7 +463,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4828174082711826, guid: cb5d084ed59bff84b966ce09be97ce30, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.156
+      value: 2.15
       objectReference: {fileID: 0}
     - target: {fileID: 4828174082711826, guid: cb5d084ed59bff84b966ce09be97ce30, type: 2}
       propertyPath: m_LocalPosition.z
@@ -497,17 +497,17 @@ Prefab:
     - target: {fileID: 70448273385903210, guid: cb5d084ed59bff84b966ce09be97ce30,
         type: 2}
       propertyPath: m_Offset.y
-      value: -0.028433442
+      value: -0.02843344
       objectReference: {fileID: 0}
     - target: {fileID: 70448273385903210, guid: cb5d084ed59bff84b966ce09be97ce30,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.16687977
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 70448273385903210, guid: cb5d084ed59bff84b966ce09be97ce30,
         type: 2}
       propertyPath: m_Size.y
-      value: 0.57281756
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 58418671071383454, guid: cb5d084ed59bff84b966ce09be97ce30,
         type: 2}
@@ -535,11 +535,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4160022211138916, guid: 66c507eb6f136cd4783b7b28c9699a4a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.525
+      value: 1.476
       objectReference: {fileID: 0}
     - target: {fileID: 4160022211138916, guid: 66c507eb6f136cd4783b7b28c9699a4a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.56
+      value: -1.511
       objectReference: {fileID: 0}
     - target: {fileID: 4160022211138916, guid: 66c507eb6f136cd4783b7b28c9699a4a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -673,8 +673,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   profile: {fileID: 11400000, guid: e064ff54c33606b4dbd5360ea5a1af44, type: 2}
 --- !u!1001 &752127876
 Prefab:
@@ -902,7 +902,7 @@ Prefab:
     - target: {fileID: 212350420404598272, guid: 009cd9d2c6a1fd5489f8a9b474ccf168,
         type: 2}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: 4563b1de7e73a4946a7485b17556ba61,
         type: 3}
     - target: {fileID: 212350420404598272, guid: 009cd9d2c6a1fd5489f8a9b474ccf168,
@@ -1020,12 +1020,12 @@ Prefab:
     - target: {fileID: 114326333130255004, guid: b5e7fa3c28feb324ca2609b51a74c644,
         type: 2}
       propertyPath: portalTarget
-      value: 
+      value:
       objectReference: {fileID: 1611797799}
     - target: {fileID: 114326333130255004, guid: b5e7fa3c28feb324ca2609b51a74c644,
         type: 2}
       propertyPath: platformManager
-      value: 
+      value:
       objectReference: {fileID: 1400231998}
     - target: {fileID: 114326333130255004, guid: b5e7fa3c28feb324ca2609b51a74c644,
         type: 2}
@@ -1044,7 +1044,7 @@ Prefab:
     - target: {fileID: 212307378561010676, guid: b5e7fa3c28feb324ca2609b51a74c644,
         type: 2}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: 6caebd59c3cd20b4882d72e8c34961a8,
         type: 3}
     - target: {fileID: 61614359964765066, guid: b5e7fa3c28feb324ca2609b51a74c644,
@@ -1215,18 +1215,18 @@ Prefab:
     - target: {fileID: 114249114509947652, guid: 20695770524b463498b02c6d13771566,
         type: 2}
       propertyPath: profile_active
-      value: 
+      value:
       objectReference: {fileID: 11400000, guid: a7d9bba371feab0428003c5b72bf24a5,
         type: 2}
     - target: {fileID: 114249114509947652, guid: 20695770524b463498b02c6d13771566,
         type: 2}
       propertyPath: layer
-      value: 
+      value:
       objectReference: {fileID: 1805109314}
     - target: {fileID: 212723678415561668, guid: 20695770524b463498b02c6d13771566,
         type: 2}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: 2bb0770d6b83f8f4fb4f5c30248e7542,
         type: 3}
     - target: {fileID: 4560517850400492, guid: 20695770524b463498b02c6d13771566, type: 2}
@@ -1610,42 +1610,42 @@ Prefab:
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
@@ -1675,7 +1675,7 @@ Prefab:
     - target: {fileID: 212900096267834260, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: 600180bf2c55fa74081175118c76d6f7,
         type: 3}
     - target: {fileID: 212900096267834260, guid: 1eef49ae81d2d0e469f673847e1b8308,
@@ -1865,22 +1865,22 @@ Prefab:
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 1438366716}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 1249389844}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 1390489902}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 1945495693817960, guid: 1eef49ae81d2d0e469f673847e1b8308, type: 2}
       propertyPath: m_Name
@@ -1889,22 +1889,22 @@ Prefab:
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 1438366719}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 1249389847}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 1390489905}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
@@ -1944,7 +1944,7 @@ Prefab:
     - target: {fileID: 212900096267834260, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: 7c97205df4a327447b2fed73675ef747,
         type: 3}
     - target: {fileID: 212900096267834260, guid: 1eef49ae81d2d0e469f673847e1b8308,
@@ -2078,7 +2078,7 @@ Prefab:
     - target: {fileID: 212350420404598272, guid: 009cd9d2c6a1fd5489f8a9b474ccf168,
         type: 2}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: 91caa0601257321478691012d5128881,
         type: 3}
     - target: {fileID: 212350420404598272, guid: 009cd9d2c6a1fd5489f8a9b474ccf168,
@@ -2279,12 +2279,12 @@ Prefab:
     - target: {fileID: 114326333130255004, guid: b5e7fa3c28feb324ca2609b51a74c644,
         type: 2}
       propertyPath: platformManager
-      value: 
+      value:
       objectReference: {fileID: 1400231998}
     - target: {fileID: 114326333130255004, guid: b5e7fa3c28feb324ca2609b51a74c644,
         type: 2}
       propertyPath: portalTarget
-      value: 
+      value:
       objectReference: {fileID: 412305929}
     - target: {fileID: 61614359964765066, guid: b5e7fa3c28feb324ca2609b51a74c644,
         type: 2}
@@ -2355,42 +2355,42 @@ Prefab:
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: layer.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: plateforms.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
@@ -2415,7 +2415,7 @@ Prefab:
     - target: {fileID: 212900096267834260, guid: 1eef49ae81d2d0e469f673847e1b8308,
         type: 2}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: 8cf12b9a0797684419dcb4f9500f9900,
         type: 3}
     - target: {fileID: 212900096267834260, guid: 1eef49ae81d2d0e469f673847e1b8308,
@@ -2509,7 +2509,7 @@ Prefab:
     - target: {fileID: 114182974756268082, guid: 872afbbe90581744b94d46cfa6e3c1d8,
         type: 2}
       propertyPath: portalTarget
-      value: 
+      value:
       objectReference: {fileID: 1611797799}
     - target: {fileID: 61725578703659304, guid: 872afbbe90581744b94d46cfa6e3c1d8,
         type: 2}

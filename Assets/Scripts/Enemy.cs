@@ -16,14 +16,16 @@ public class Enemy : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-    Vector3 forceDirection = transform.position - center.transform.position;
-    rb2D.velocity = rb2D.velocity / 1.5f;
+    if(!GameManager.instance.doingSetup) {
+      Vector3 forceDirection = transform.position - center.transform.position;
+      rb2D.velocity = rb2D.velocity / 1.5f;
 
-    //Vector2 vec = new Vector2(movementSpeed * 5.0f, 0.0f);
-    float moveX = movementSpeed * Time.deltaTime;
-    Vector3 addX = transform.right * moveX;
-    rb2D.AddForce(addX);
-    //rb2D.AddForce(forceDirection.normalized * 1f * Time.fixedDeltaTime);
+      //Vector2 vec = new Vector2(movementSpeed * 5.0f, 0.0f);
+      float moveX = movementSpeed * Time.deltaTime;
+      Vector3 addX = transform.right * moveX;
+      rb2D.AddForce(addX);
+      //rb2D.AddForce(forceDirection.normalized * 1f * Time.fixedDeltaTime);
+    }
 	}
 
    void OnCollisionEnter2D(Collision2D col)
