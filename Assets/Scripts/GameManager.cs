@@ -10,8 +10,10 @@ using UnityEngine.SceneManagement;
         private int level = 1;                                  //Current level number, expressed in game as "Day 1".
         public float levelStartDelay = 3.0f;
         public bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
+        public bool hasInvertedInput = false;
         private Text timerText;
         private GameObject beforeStartCanvas;
+        private GameObject invertedInputCanvas;
         private CountDown myTimer;
 
         //Awake is always called before any Start functions
@@ -32,7 +34,7 @@ using UnityEngine.SceneManagement;
             //boardScript = GetComponent<BoardManager>();
 
             //Call the InitGame function to initialize the first level
-            InitGame();
+            //InitGame();
         }
 
         //This is called each time a scene is loaded.
@@ -52,6 +54,9 @@ using UnityEngine.SceneManagement;
             myTimer = GameObject.Find("TimerText").GetComponent<CountDown>();
 
             beforeStartCanvas = GameObject.Find("BeforeStartCanvas");
+
+            invertedInputCanvas = GameObject.Find("InputGlitchInfo");
+            invertedInputCanvas.SetActive(false);
             Invoke("HideBeforeStartCanvas", levelStartDelay);
         }
 
@@ -73,6 +78,10 @@ using UnityEngine.SceneManagement;
         {
         }
 
+        private void ReloadLevel() {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        }
+
         public void Finished(string message) {
             myTimer.StopTimer();
         }
@@ -86,7 +95,21 @@ using UnityEngine.SceneManagement;
             myTimer.AddTime(value);
         }
 
-        private void ReloadLevel() {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        public void InvertedInput(float timer) {
+            hasInvertedInput = true;
+            invertedInputCanvas.SetActive(true);
+            Invoke("BackToNormalInput", timer);
+            Invoke("DisableInvertedInputCanvas", 2.0f);
         }
+
+        private void BackToNormalInput() {
+            hasInvertedInput = false;
+        }
+
+        private void DisableInvertedInputCanvas() {
+            invertedInputCanvas.SetActive(false);
+        }
+
+
+
     }
