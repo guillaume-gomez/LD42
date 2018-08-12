@@ -58,7 +58,10 @@ MonoBehaviour:
     minRespawnSpeed: 0
     timeToDecreaseSpawnTime: 0
     decreaseStep: 0
+    plateformNbOnMalus: 0
+  index: 0
   active: 0
+  rotationSpeed: 0
 --- !u!212 &212900096267834260
 SpriteRenderer:
   m_ObjectHideFlags: 1

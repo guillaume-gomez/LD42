@@ -6,6 +6,7 @@ public class PlatformDestroyableBase : IAbstractPlatform
 {
     public AudioClip destroyedSound;
     protected Animator animator;
+    private bool transitionning = false;
 
     public override void Start() {
       base.Start();
@@ -24,19 +25,25 @@ public class PlatformDestroyableBase : IAbstractPlatform
       base.active = false;
       base.spriteRenderer.enabled = false;
 
+      animator.SetBool("destroyed", false);
+        animator.Play("Idle");
+        transitionning = false;
       foreach (Collider2D collider in base.colliders)
           collider.enabled = false;
     }
 
     void PerformDestroyAnim() {
+        transitionning = true;
       SoundManager.instance.PlaySingle(destroyedSound);
       animator.SetBool("destroyed", true);
       Invoke("Deactivate", 0.6f);
+      foreach (Collider2D collider in base.colliders)
+          collider.enabled = false;
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-       if(col.gameObject.tag == "Player")
+       if(col.gameObject.tag == "Player" && !transitionning)
        {
          PerformDestroyAnim();
        }
