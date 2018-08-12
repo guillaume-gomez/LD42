@@ -82,6 +82,10 @@ using UnityEngine.SceneManagement;
             Invoke("ReloadLevel", 1f);
         }
 
+        public void AddTime(float value) {
+            myTimer.AddTime(value);
+        }
+
         private void ReloadLevel() {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         }
