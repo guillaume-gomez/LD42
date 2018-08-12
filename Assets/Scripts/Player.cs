@@ -80,7 +80,7 @@ public class Player : MonoBehaviour {
         grounded = true;
     }
 
-    if(collision.gameObject.tag == "Enemy") {
+    if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Laser") {
       GameManager.instance.GameOver("player_die");
       //animation hurt
       //Destroy(gameObject);
