@@ -459,11 +459,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4828174082711826, guid: cb5d084ed59bff84b966ce09be97ce30, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4828174082711826, guid: cb5d084ed59bff84b966ce09be97ce30, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.156
+      value: 2.15
       objectReference: {fileID: 0}
     - target: {fileID: 4828174082711826, guid: cb5d084ed59bff84b966ce09be97ce30, type: 2}
       propertyPath: m_LocalPosition.z
@@ -497,17 +497,17 @@ Prefab:
     - target: {fileID: 70448273385903210, guid: cb5d084ed59bff84b966ce09be97ce30,
         type: 2}
       propertyPath: m_Offset.y
-      value: -0.028433442
+      value: -0.02843344
       objectReference: {fileID: 0}
     - target: {fileID: 70448273385903210, guid: cb5d084ed59bff84b966ce09be97ce30,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.16687977
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 70448273385903210, guid: cb5d084ed59bff84b966ce09be97ce30,
         type: 2}
       propertyPath: m_Size.y
-      value: 0.57281756
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 58418671071383454, guid: cb5d084ed59bff84b966ce09be97ce30,
         type: 2}
@@ -518,6 +518,41 @@ Prefab:
         type: 2}
       propertyPath: m_Radius
       value: 0.0780673
+      objectReference: {fileID: 0}
+    - target: {fileID: 95550932472494184, guid: cb5d084ed59bff84b966ce09be97ce30,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95550932472494184, guid: cb5d084ed59bff84b966ce09be97ce30,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58418671071383454, guid: cb5d084ed59bff84b966ce09be97ce30,
+        type: 2}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58418671071383454, guid: cb5d084ed59bff84b966ce09be97ce30,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 70448273385903210, guid: cb5d084ed59bff84b966ce09be97ce30,
+        type: 2}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58418671071383454, guid: cb5d084ed59bff84b966ce09be97ce30,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 70448273385903210, guid: cb5d084ed59bff84b966ce09be97ce30,
+        type: 2}
+      propertyPath: m_Direction
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb5d084ed59bff84b966ce09be97ce30, type: 2}
@@ -531,11 +566,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4160022211138916, guid: 66c507eb6f136cd4783b7b28c9699a4a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.525
+      value: 1.476
       objectReference: {fileID: 0}
     - target: {fileID: 4160022211138916, guid: 66c507eb6f136cd4783b7b28c9699a4a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.56
+      value: -1.511
       objectReference: {fileID: 0}
     - target: {fileID: 4160022211138916, guid: 66c507eb6f136cd4783b7b28c9699a4a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1055,11 +1090,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4160022211138916, guid: 66c507eb6f136cd4783b7b28c9699a4a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.143
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: 4160022211138916, guid: 66c507eb6f136cd4783b7b28c9699a4a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.45
+      value: 0.49
       objectReference: {fileID: 0}
     - target: {fileID: 4160022211138916, guid: 66c507eb6f136cd4783b7b28c9699a4a, type: 2}
       propertyPath: m_LocalPosition.z
