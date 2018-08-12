@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114324287658820498}
   - component: {fileID: 58418671071383454}
   - component: {fileID: 70448273385903210}
+  - component: {fileID: 70106933674155156}
   m_Layer: 0
   m_Name: Player_Gravity 1
   m_TagString: Player
@@ -80,6 +81,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.3213656}
   serializedVersion: 2
   m_Radius: 0.0780673
+--- !u!70 &70106933674155156
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1856804952741792}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.3}
+  m_Size: {x: 0.6, y: 0.1}
+  m_Direction: 1
 --- !u!70 &70448273385903210
 CapsuleCollider2D:
   m_ObjectHideFlags: 1

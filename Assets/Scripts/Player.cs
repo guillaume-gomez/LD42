@@ -17,7 +17,8 @@ public class Player : MonoBehaviour {
     protected SpriteRenderer spriteRenderer;
     protected Rigidbody2D rb2D;
     protected CircleCollider2D footCollider;
-    protected CapsuleCollider2D bodyCollider;
+    protected CapsuleCollider2D bodyColliderVer;
+    protected CapsuleCollider2D bodyColliderHor;
     protected int animeState = 0; //IDLE /RUN /JUMP /Slide
     protected float distToCenter = 0;
 
@@ -26,7 +27,13 @@ public class Player : MonoBehaviour {
         animator = GetComponent<Animator>();
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         footCollider = this.GetComponent<CircleCollider2D>();
-        bodyCollider = this.GetComponent<CapsuleCollider2D>();
+        CapsuleCollider2D[] colliders = this.GetComponents<CapsuleCollider2D>();
+        foreach(CapsuleCollider2D cap in colliders) {
+            if (cap.direction.Equals(CapsuleDirection2D.Horizontal))
+                bodyColliderHor = cap;
+            else
+                bodyColliderVer = cap;
+        }
     }
 
     void Start () {
@@ -130,41 +137,51 @@ public class Player : MonoBehaviour {
             switch(animeState) {
                 case 0:
                     animator.Play("IdlePlayer");
-                    bodyCollider.direction = CapsuleDirection2D.Vertical;
-                    bodyCollider.offset.Set(0f, 0f);
-                    bodyCollider.size.Set(0.1f, 0.5f);
+                    bodyColliderVer.enabled = true;
+                    bodyColliderHor.enabled = false;
+
+                    bodyColliderVer.offset.Set(0f, 0f);
+                    bodyColliderVer.size.Set(0.1f, 0.5f);
                     footCollider.offset.Set(0f, -0.3213656f);
                     break;
 
                 case 1:
                     animator.Play("RunPlayer");
-                    bodyCollider.direction = CapsuleDirection2D.Vertical;
-                    bodyCollider.offset.Set(0.1f, 0f);
-                    bodyCollider.size.Set(0.35f, 0.5f);
+                    bodyColliderVer.enabled = true;
+                    bodyColliderHor.enabled = false;
+
+                    bodyColliderVer.offset.Set(0.1f, 0f);
+                    bodyColliderVer.size.Set(0.35f, 0.5f);
                     footCollider.offset.Set(0f, -0.3213656f);
                     break;
 
                 case 2:
                     animator.Play("JumpPlayer");
-                    bodyCollider.direction = CapsuleDirection2D.Vertical;
-                    bodyCollider.offset.Set(0.08f, 0.05f);
-                    bodyCollider.size.Set(0.2f, 0.3f);
+                    bodyColliderVer.enabled = true;
+                    bodyColliderHor.enabled = false;
+
+                    bodyColliderVer.offset.Set(0.08f, 0.05f);
+                    bodyColliderVer.size.Set(0.2f, 0.3f);
                     footCollider.offset.Set(0.08f, 0.01f);
                     break;
 
                 case 3:
                     animator.Play("SlidePlayer");
-                    bodyCollider.direction = CapsuleDirection2D.Horizontal;
-                    bodyCollider.offset.Set(0f, -0.3f);
-                    bodyCollider.size.Set(0.6f, 0.1f);
+                    bodyColliderVer.enabled = false;
+                    bodyColliderHor.enabled = true;
+
+                    bodyColliderHor.offset.Set(0f, -0.3f);
+                    bodyColliderHor.size.Set(0.6f, 0.1f);
                     footCollider.offset.Set(0f, -0.3213656f);
                     break;
 
                 default:
                     animator.Play("IdlePlayer");
-                    bodyCollider.direction = CapsuleDirection2D.Vertical;
-                    bodyCollider.offset.Set(0f, 0f);
-                    bodyCollider.size.Set(0.1f, 0.5f);
+                    bodyColliderVer.enabled = true;
+                    bodyColliderHor.enabled = false;
+
+                    bodyColliderVer.offset.Set(0f, 0f);
+                    bodyColliderVer.size.Set(0.1f, 0.5f);
                     footCollider.offset.Set(0f, -0.3213656f);
                     break;
             }
