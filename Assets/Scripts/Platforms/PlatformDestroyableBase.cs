@@ -43,7 +43,8 @@ public class PlatformDestroyableBase : IAbstractPlatform
 
     void OnCollisionEnter2D(Collision2D col)
     {
-       if(col.gameObject.tag == "Player" && !transitionning)
+       if(!transitionning && col.gameObject.tag == "Player"
+            && col.gameObject.GetComponent<Player>().animeState >= 3)
        {
          PerformDestroyAnim();
        }

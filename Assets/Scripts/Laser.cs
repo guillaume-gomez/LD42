@@ -68,15 +68,4 @@ public class Laser : MonoBehaviour {
             switched = false;
         }
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log(active);
-        if (active && other.gameObject.tag == "Player")
-        {
-            Debug.Log("KillPlayer");
-            GameManager.instance.GameOver("LaserHit");
-            // kill player
-        }
-    }
 }

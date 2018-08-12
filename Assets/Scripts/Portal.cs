@@ -17,6 +17,11 @@ public class Portal : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         if (lastReset >= resetTimer && other.gameObject.tag == "Player") {
+            if (triggerLevelEnd)
+            {
+                GameManager.instance.Finished("escape");
+                return;
+            }
             lastReset = 0f;
             portalTarget.lastReset = 0f;
             other.transform.position = portalTarget.transform.position;
