@@ -26,4 +26,8 @@ public class CountDown : Timer {
       timerText.text = minutes + ": " + seconds;
     }
   }
+
+  public void AddTime(float seconds) {
+    timeLeft += seconds;
+  }
 }
