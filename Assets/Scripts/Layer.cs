@@ -46,7 +46,9 @@ public class Layer : MonoBehaviour {
     public IAbstractPlatform[] plateforms;
     // Rules
     public LayerRulesAndState rules;
+    public uint index;
     public bool active;
+    public float rotationSpeed;
 
     // Use this for initialization
     void Start () {
@@ -55,16 +57,23 @@ public class Layer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        rules.UpdateState();
+        transform.Rotate(0,0,rotationSpeed);
 
-        if (active && rules.ShouldRespawn()) {
-            ArrayList plateformIndexes = GetInactivePlateformsIndexes();
+        if (active)
+        {
+            rules.UpdateState();
 
-            if (plateformIndexes.Count > 0) {
-                int toBeActivated = Mathf.RoundToInt(Random.Range(0, plateformIndexes.Count));
+            if (rules.ShouldRespawn())
+            {
+                ArrayList plateformIndexes = GetInactivePlateformsIndexes();
 
-                plateforms[(uint)plateformIndexes[toBeActivated]].Activate();
-                rules.AsRespawn();
+                if (plateformIndexes.Count > 0)
+                {
+                    int toBeActivated = Mathf.RoundToInt(Random.Range(0, plateformIndexes.Count));
+
+                    plateforms[(uint)plateformIndexes[toBeActivated]].Activate();
+                    rules.AsRespawn();
+                }
             }
         }
 	}

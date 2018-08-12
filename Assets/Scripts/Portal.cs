@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour {
     public Portal portalTarget;
+    public uint layer;
+    public PlatformManager platformManager;
     public float resetTimer = 3f;
     public float lastReset = 3f;
 
@@ -17,6 +19,7 @@ public class Portal : MonoBehaviour {
             lastReset = 0f;
             portalTarget.lastReset = 0f;
             other.transform.position = portalTarget.transform.position;
+            platformManager.SetPlayerLayer(portalTarget.layer);
         }
     }
 }
