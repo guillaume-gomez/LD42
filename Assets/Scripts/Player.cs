@@ -73,11 +73,19 @@ public class Player : MonoBehaviour {
   }
 
   void OnCollisionEnter2D(Collision2D collision) {
-        if (this.GetComponent<CircleCollider2D>().OverlapPoint(collision.GetContact(0).point)) {
-            Debug.Log("RESET");
-            jumpTimer = -1f;
-            grounded = true;
-        }
+
+    if (rb2D.OverlapPoint(collision.GetContact(0).point)) {
+        Debug.Log("RESET");
+        jumpTimer = -1f;
+        grounded = true;
+    }
+
+    if(collision.gameObject.tag == "Enemy") {
+      GameManager.instance.GameOver("player_die");
+      //animation hurt
+      //Destroy(gameObject);
+    }
+
     //if(other.gameObject.tag == "Enemy") {
     //  animator.SetBool("hurt", true);
     //}
@@ -92,4 +100,5 @@ public class Player : MonoBehaviour {
 
   void Update () {
   }
+
 }
