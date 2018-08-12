@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 58418671071383454}
   - component: {fileID: 70448273385903210}
   m_Layer: 0
-  m_Name: Player_Gravity FINAL_DONT_TOUCH
+  m_Name: Player_Gravity 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

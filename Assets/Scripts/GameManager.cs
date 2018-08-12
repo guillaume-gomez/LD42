@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
         public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
         private int level = 1;                                  //Current level number, expressed in game as "Day 1".
         public float levelStartDelay = 3.0f;
-        private bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
+        public bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
         private Text timerText;
         private GameObject beforeStartCanvas;
         private CountDown myTimer;

@@ -28,6 +28,7 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
+      if(!GameManager.instance.doingSetup) {
         float move = Input.GetAxis("Horizontal");
         Vector3 forceDirection = transform.position - center.transform.position;
 
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour {
         }
         animator.SetBool("grounded", grounded);
         animator.SetFloat ("velocityX", Mathf.Abs (move));
+      }
     }
 
     void GroundCollision(Collision2D other)
