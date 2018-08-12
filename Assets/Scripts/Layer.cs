@@ -52,7 +52,7 @@ public class Layer : MonoBehaviour {
     void Start () {
         plateforms = GetComponentsInChildren<IAbstractPlatform>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         rules.UpdateState();
