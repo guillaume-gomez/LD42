@@ -10,6 +10,8 @@ public class Key : MonoBehaviour {
     SpriteRenderer targetRenderer;
     SpriteRenderer spriteRenderer;
 
+    Animator animator;
+
     // Use this for initialization
     void Start () {
         targetCollider = portalTarget.GetComponent<BoxCollider2D>();
@@ -18,6 +20,12 @@ public class Key : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
         targetCollider.enabled = false;
         targetRenderer.enabled = false;
+        animator = GetComponent<Animator>();
+    }
+
+    public void Deactivate()
+    {
+        spriteRenderer.enabled = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -25,9 +33,10 @@ public class Key : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             collision2D.enabled = false;
-            spriteRenderer.enabled = false;
             targetCollider.enabled = true;
             targetRenderer.enabled = true;
+            animator.SetBool("Taken", true);
+            Invoke("Deactivate", 0.8f);
         }
     }
 }

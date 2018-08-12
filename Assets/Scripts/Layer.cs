@@ -11,6 +11,9 @@ public class LayerRulesAndState
     public float timeToDecreaseSpawnTime;
     public float decreaseStep;
 
+    // On malus/bonus on layer
+    public uint plateformNbOnMalus;
+
     // Layer Start State
     float lastRespawn = 0.0f;
     float lastUpdate = 0.0f;
@@ -77,6 +80,21 @@ public class Layer : MonoBehaviour {
             }
         }
 	}
+
+    public void onMalus()
+    {
+        uint triggered = 0;
+
+        foreach (IAbstractPlatform plat in plateforms)
+        {
+            if (triggered < rules.plateformNbOnMalus &&
+                !plat.active)
+            {
+                plat.Activate();
+                ++triggered;
+            }
+        }
+    }
 
     ArrayList GetInactivePlateformsIndexes() {
         uint index = 0;
