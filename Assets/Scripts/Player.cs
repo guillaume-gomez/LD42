@@ -109,7 +109,7 @@ public class Player : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision) {
 
         if (rb2D.OverlapPoint(collision.GetContact(0).point)) {
-            Debug.Log("RESET");
+            //Debug.Log("RESET");
             jumpTimer = -1f;
             grounded = true;
         }
