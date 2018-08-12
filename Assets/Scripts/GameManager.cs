@@ -71,7 +71,6 @@ using UnityEngine.SceneManagement;
         //Update is called every frame.
         void Update()
         {
-            //Check that playersTurn or enemiesMoving or doingSetup are not currently true.
         }
 
         public void Finished(string message) {
@@ -79,6 +78,7 @@ using UnityEngine.SceneManagement;
         }
 
         public void GameOver(string message) {
+            doingSetup = true;
             Invoke("ReloadLevel", 3f);
         }
 
