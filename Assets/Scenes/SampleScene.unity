@@ -1727,7 +1727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleMusic: {fileID: 8300000, guid: 14e1205b189037d4f95f2de9e2da1c7e, type: 3}
-  mainMusic: {fileID: 8300000, guid: 11b0b731dd2fb2c48a5bc7b8215b8ad7, type: 3}
+  mainMusic: {fileID: 0}
   volumeDown: {fileID: 24519918, guid: 0ac7fb39e445048d89688f69c2a1839a, type: 2}
   volumeUp: {fileID: 24500003, guid: 0ac7fb39e445048d89688f69c2a1839a, type: 2}
 --- !u!82 &909445107
