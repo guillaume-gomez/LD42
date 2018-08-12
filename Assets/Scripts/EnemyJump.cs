@@ -22,7 +22,6 @@ public class EnemyJump : MonoBehaviour {
   void Update () {
     if(grounded) {
       Vector3 forceDirection = transform.position - center.transform.position;
-      Debug.Log(forceDirection.normalized * maxJump);
       rb2D.AddForce(forceDirection.normalized * maxJump);
       grounded = false;
     }
