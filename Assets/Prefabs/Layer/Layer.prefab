@@ -59,6 +59,7 @@ MonoBehaviour:
     timeToDecreaseSpawnTime: 0
     decreaseStep: 0
     plateformNbOnMalus: 0
+    layerType: '  '
   index: 0
   active: 0
   rotationSpeed: 0
