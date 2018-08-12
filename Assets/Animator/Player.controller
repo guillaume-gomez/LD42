@@ -157,7 +157,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: IdlePlayer 0
+  m_Name: IdlePlayer
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
