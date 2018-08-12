@@ -41,7 +41,7 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (!GameManager.instance.doingSetup) {
+        if (GameManager.instance.doingSetup) {
             return;
         }
 
