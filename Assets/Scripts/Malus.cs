@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.PostProcessing;
 
 public class Malus : MonoBehaviour {
-    GameObject cameraAffected;
-    SpriteRenderer spriteRenderer;
-    BoxCollider2D collisionBox2D;
-    Animator animator;
+    protected GameObject cameraAffected;
+    protected SpriteRenderer spriteRenderer;
+    protected BoxCollider2D collisionBox2D;
+    protected Animator animator;
     public PostProcessingProfile profile_active;
     public Layer layer;
 
@@ -16,6 +16,7 @@ public class Malus : MonoBehaviour {
     private void Start()
     {
         cameraAffected = GameObject.FindGameObjectWithTag("MainCamera");
+        Debug.Log(cameraAffected);
         base_profile = cameraAffected.gameObject.GetComponent<PostProcessingBehaviour>().profile;
         spriteRenderer = GetComponent<SpriteRenderer>();
         collisionBox2D = GetComponent<BoxCollider2D>();
@@ -31,7 +32,7 @@ public class Malus : MonoBehaviour {
         cameraAffected.gameObject.GetComponent<PostProcessingBehaviour>().profile = base_profile;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
