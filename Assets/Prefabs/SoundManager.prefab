@@ -35,8 +35,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053452775259188}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3580618, y: 3.9359198, z: -9.828125}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.008061, y: 7.8718395, z: -19.65625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,8 +52,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.46
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -146,11 +146,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 11b0b731dd2fb2c48a5bc7b8215b8ad7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -245,5 +245,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   efxSource: {fileID: 82242971766668966}
   musicSource: {fileID: 82679502513030398}
+  musicAudioClipArray:
+  - {fileID: 8300000, guid: 11b0b731dd2fb2c48a5bc7b8215b8ad7, type: 3}
+  - {fileID: 8300000, guid: 11a0209be4bd4894d91dce4cf6fdbd20, type: 3}
+  - {fileID: 8300000, guid: 835ba241525a3894cb13ed8653caef01, type: 3}
   lowPitchRange: 0.95
   highPitchRange: 1.05

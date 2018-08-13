@@ -15,6 +15,7 @@ using UnityEngine.SceneManagement;
         private GameObject beforeStartCanvas;
         private GameObject invertedInputCanvas;
         private CountDown myTimer;
+        private LayerTypeEnum currentLayerType;
 
         //Awake is always called before any Start functions
         void Awake()
@@ -34,7 +35,7 @@ using UnityEngine.SceneManagement;
             //boardScript = GetComponent<BoardManager>();
 
             //Call the InitGame function to initialize the first level
-            //InitGame();
+            InitGame();
         }
 
         //This is called each time a scene is loaded.
@@ -43,7 +44,7 @@ using UnityEngine.SceneManagement;
             //Add one to our level number.
             level++;
             //Call InitGame to initialize our level.
-            InitGame();
+            //InitGame();
         }
 
         //Initializes the game for each level.
@@ -100,6 +101,14 @@ using UnityEngine.SceneManagement;
             invertedInputCanvas.SetActive(true);
             Invoke("BackToNormalInput", timer);
             Invoke("DisableInvertedInputCanvas", 2.0f);
+        }
+
+        public void SetPlayerLayer(LayerTypeEnum layerType, uint layerIndex) {
+            if(currentLayerType != layerType)
+            {
+                SoundManager.instance.PlayAndSwitchMusic(layerType);
+            }
+            currentLayerType = layerType;
         }
 
         private void BackToNormalInput() {

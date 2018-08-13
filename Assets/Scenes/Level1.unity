@@ -2085,6 +2085,11 @@ Prefab:
       propertyPath: rules.plateformNbOnMalus
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
+        type: 2}
+      propertyPath: rules.layerType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1eef49ae81d2d0e469f673847e1b8308, type: 2}
@@ -2976,6 +2981,11 @@ Prefab:
       propertyPath: rules.plateformNbOnMalus
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
+        type: 2}
+      propertyPath: rules.layerType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1eef49ae81d2d0e469f673847e1b8308, type: 2}
@@ -3032,7 +3042,7 @@ Prefab:
     - target: {fileID: 114461854086821870, guid: 5131e3ac7212698489337cd8ba1cee74,
         type: 2}
       propertyPath: timeLeft
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5131e3ac7212698489337cd8ba1cee74, type: 2}
