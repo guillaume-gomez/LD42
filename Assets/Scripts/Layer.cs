@@ -18,7 +18,7 @@ public class LayerRulesAndState
     float lastRespawn = 0.0f;
     float lastUpdate = 0.0f;
 
-    public string layerType = "";
+    public LayerTypeEnum layerType;
 
     public void UpdateState()
     {
