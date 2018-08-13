@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
     }
 
     void Start () {
-          center = GameObject.FindGameObjectsWithTag("Gravity")[0];
+          center = GameObject.FindGameObjectWithTag("Gravity");
     }
 
     void FixedUpdate() {

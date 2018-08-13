@@ -16,7 +16,6 @@ public class Malus : MonoBehaviour {
     private void Start()
     {
         cameraAffected = GameObject.FindGameObjectWithTag("MainCamera");
-        Debug.Log(cameraAffected);
         base_profile = cameraAffected.gameObject.GetComponent<PostProcessingBehaviour>().profile;
         spriteRenderer = GetComponent<SpriteRenderer>();
         collisionBox2D = GetComponent<BoxCollider2D>();

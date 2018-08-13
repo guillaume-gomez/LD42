@@ -92,6 +92,7 @@ using UnityEngine.SceneManagement;
         }
 
         public void Finished(string message) {
+            SoundManager.instance.StopMusic();
             SoundManager.instance.PlaySingle(winSound);
             myTimer.StopTimer();
         }
