@@ -92,6 +92,7 @@ using UnityEngine.SceneManagement;
         }
 
         public void Finished(string message) {
+            SoundManager.instance.StopMusic();
             SoundManager.instance.PlaySingle(winSound);
             myTimer.StopTimer();
         }
@@ -112,7 +113,7 @@ using UnityEngine.SceneManagement;
             hasInvertedInput = true;
             invertedInputCanvas.SetActive(true);
             Invoke("BackToNormalInput", timer);
-            Invoke("DisableInvertedInputCanvas", 2.0f);
+            Invoke("DisableInvertedInputCanvas", 4.8f);
         }
 
         public void SetPlayerLayer(LayerTypeEnum layerType, uint layerIndex) {
