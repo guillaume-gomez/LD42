@@ -42,7 +42,7 @@ using UnityEngine.SceneManagement;
             //Get a component reference to the attached BoardManager script
             //boardScript = GetComponent<BoardManager>();
 
-            //Call the InitGame function to initialize the first level
+            // UNCOMMENT THOSE TWO LINES TO TEST YOUR SCENE AS STANDALONE
             playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
             InitGame();
         }
