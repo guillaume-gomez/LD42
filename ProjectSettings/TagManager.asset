@@ -11,6 +11,7 @@ TagManager:
   - Laser
   - Crate
   - CustomEnemy
+  - SoundFromUI
   layers:
   - Default
   - TransparentFX

@@ -115,7 +115,8 @@ using UnityEngine.SceneManagement;
             } else {
                 //Add one to our level number.
                 level++;
-                SceneManager.LoadScene(level);
+                //hardcoded 2 represent the nb scenes before the first level
+                SceneManager.LoadScene(2 + level);
             }
         }
 
