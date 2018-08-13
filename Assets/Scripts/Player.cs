@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (!GameManager.instance.doingSetup || teleporting) {
+        if (GameManager.instance.doingSetup || teleporting) {
             return;
         }
 
