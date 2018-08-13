@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114550529713760448}
   m_Layer: 0
   m_Name: EnemyGreedy
-  m_TagString: Enemy
+  m_TagString: CustomEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03ee7983877be14b9ce7b5b6d98ad06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lengthAnimation: 2
+  slowAnimationBy: 3
   maxScale: 1
 --- !u!212 &212345205250824394
 SpriteRenderer:

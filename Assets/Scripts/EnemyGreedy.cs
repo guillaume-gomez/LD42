@@ -4,29 +4,22 @@ using UnityEngine;
 
 public class EnemyGreedy : MonoBehaviour {
 
-  public float lengthAnimation = 1.0f;
-  public float maxScale = 1.5f;
-  private float originalScale = 0.7f;
-  private float currentScale;
-  private int direction = 1;
-  protected Rigidbody2D rb2D;
-
-
-  // Use this for initialization
-  void Start () {
-    rb2D = gameObject.GetComponent<Rigidbody2D>();
-    currentScale = originalScale;
-  }
-
-  void Update () {
-    if(!GameManager.instance.doingSetup) {
-      currentScale += direction * (Time.deltaTime * (maxScale - originalScale))/ lengthAnimation;
-      if(currentScale > maxScale || currentScale < originalScale) {
-        direction = - direction;
-      }
-      Debug.Log(currentScale);
-      transform.localScale = new Vector3(currentScale, currentScale, transform.localScale.z);
+    public float slowAnimationBy = 3f;
+    public float maxScale = 1.5f;
+    private float scaleUp = 1f; 
+    // Use this for initialization
+    void Start () {
     }
-  }
+
+    void Update () {
+      if(!GameManager.instance.doingSetup) {
+            if (transform.localScale.x >= maxScale)
+                scaleUp = -1f;
+            else if (transform.localScale.x <= 0.3f)
+                scaleUp = 1f;
+            float tmp = (Time.deltaTime / slowAnimationBy) * scaleUp;
+            transform.localScale = new Vector3(transform.localScale.x + tmp, transform.localScale.y + tmp, transform.localScale.z + tmp); 
+        }
+    }
 
 }
