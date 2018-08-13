@@ -50,7 +50,8 @@ using UnityEngine.SceneManagement;
         //This is called each time a scene is loaded.
         void OnLevelWasLoaded(int index)
         {
-            if(index != 0) {
+            // hardcoded index about credit and main menu
+            if(index != 0 || index != 6) {
                 playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
                 camera = GameObject.FindGameObjectWithTag("MainCamera");
                 invertedInputCanvas = GameObject.Find("InputGlitchInfo");
@@ -109,6 +110,7 @@ using UnityEngine.SceneManagement;
         private void LoadNextLevel() {
             isTransiting = false;
             SoundManager.instance.PlayMusic();
+            Debug.Log("LoadNextLevel" + level);
             if(level + 1 > nbLevels) {
                 // Go back end credirs
                 SceneManager.LoadScene(6);
