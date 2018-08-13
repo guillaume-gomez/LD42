@@ -23,7 +23,7 @@ using UnityEngine.SceneManagement;
         private GameObject camera;
 
 
-        private const int nbLevels = 2;
+        private const int nbLevels = 3;
 
         //Awake is always called before any Start functions
         void Awake()
@@ -50,8 +50,8 @@ using UnityEngine.SceneManagement;
         //This is called each time a scene is loaded.
         void OnLevelWasLoaded(int index)
         {
-            if(index != 0) {
-                Debug.Log("Coucou" + index + " " + level);
+            // hardcoded index about credit and main menu
+            if(index != 0 || index != 6) {
                 playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
                 camera = GameObject.FindGameObjectWithTag("MainCamera");
                 invertedInputCanvas = GameObject.Find("InputGlitchInfo");
@@ -110,13 +110,15 @@ using UnityEngine.SceneManagement;
         private void LoadNextLevel() {
             isTransiting = false;
             SoundManager.instance.PlayMusic();
+            Debug.Log("LoadNextLevel" + level);
             if(level + 1 > nbLevels) {
-                // Go back main menu
-                SceneManager.LoadScene(0);
+                // Go back end credirs
+                SceneManager.LoadScene(6);
             } else {
                 //Add one to our level number.
                 level++;
-                SceneManager.LoadScene(level);
+                //hardcoded 2 represent the nb scenes before the first level
+                SceneManager.LoadScene(2 + level);
             }
         }
 
@@ -170,7 +172,4 @@ using UnityEngine.SceneManagement;
         private void DisableInvertedInputCanvas() {
             invertedInputCanvas.SetActive(false);
         }
-
-
-
     }

@@ -137,7 +137,7 @@ public class Player : MonoBehaviour {
             grounded = true;
         }
 
-        if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser") {
+        if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser" || collision.gameObject.tag == "CustomEnemy") {
             if (collision.gameObject.tag == "Laser"
                 && !collision.gameObject.GetComponent<Laser>().isActive())
                 return;
@@ -164,6 +164,7 @@ public class Player : MonoBehaviour {
     public void onDeath() {
         animator.Play("PlayerDeath1");
         stopAnimations = true;
+        teleporting = true;
         rb2D.velocity = new Vector2(0f, 0f);
         Invoke("callbackGameManagerOnDeath", 0.6f);
     }
