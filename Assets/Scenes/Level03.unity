@@ -1084,6 +1084,11 @@ Prefab:
       propertyPath: rotationSpeed
       value: -0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
+        type: 2}
+      propertyPath: rules.layerType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eef49ae81d2d0e469f673847e1b8308, type: 2}
   m_IsPrefabAsset: 0
@@ -5198,6 +5203,11 @@ Prefab:
         type: 2}
       propertyPath: rotationSpeed
       value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114655864792845404, guid: 1eef49ae81d2d0e469f673847e1b8308,
+        type: 2}
+      propertyPath: rules.layerType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eef49ae81d2d0e469f673847e1b8308, type: 2}

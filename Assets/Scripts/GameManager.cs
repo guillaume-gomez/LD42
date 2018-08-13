@@ -169,7 +169,4 @@ using UnityEngine.SceneManagement;
         private void DisableInvertedInputCanvas() {
             invertedInputCanvas.SetActive(false);
         }
-
-
-
     }
