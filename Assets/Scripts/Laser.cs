@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour {
     Animator        animator;
+    BoxCollider2D   collisions;
 
     public float    activationTime;
     public float    deactivationTime;
@@ -18,8 +19,10 @@ public class Laser : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
+        collisions = GetComponent<BoxCollider2D>();
     }
 
+    public bool isActive() { return active; }
     float getActiveTimer()
     {
         return active ? activationTime : deactivationTime;
@@ -48,6 +51,7 @@ public class Laser : MonoBehaviour {
             {
                 switched = true;
                 active = !active;
+                collisions.enabled = active;
             }
 
         }
