@@ -1011,7 +1011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lengthAnimation: 1
-  maxSize: 6.5
+  maxSize: 4
 --- !u!1001 &379941640
 Prefab:
   m_ObjectHideFlags: 0
