@@ -23,7 +23,7 @@ using UnityEngine.SceneManagement;
         private GameObject camera;
 
 
-        private const int nbLevels = 2;
+        private const int nbLevels = 3;
 
         //Awake is always called before any Start functions
         void Awake()
