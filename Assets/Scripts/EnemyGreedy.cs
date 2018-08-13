@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyGreedy : MonoBehaviour {
 
-  public float lengthAnimation = 2.0f;
+  public float lengthAnimation = 1.0f;
   public float maxScale = 1.5f;
   private float originalScale = 0.7f;
   private float currentScale;
@@ -17,16 +17,15 @@ public class EnemyGreedy : MonoBehaviour {
   void Start () {
     rb2D = gameObject.GetComponent<Rigidbody2D>();
     currentScale = originalScale;
-    step = (maxScale - originalScale) / (lengthAnimation * 100);
   }
 
-  // TO DO Taking acount of timer and Time.deltaTime
   void Update () {
     if(!GameManager.instance.doingSetup) {
-      currentScale += direction * step;
+      currentScale += direction * (Time.deltaTime * (maxScale - originalScale))/ lengthAnimation;
       if(currentScale > maxScale || currentScale < originalScale) {
         direction = - direction;
       }
+      Debug.Log(currentScale);
       transform.localScale = new Vector3(currentScale, currentScale, transform.localScale.z);
     }
   }
