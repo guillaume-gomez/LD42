@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61585214500622292}
   m_Layer: 0
   m_Name: PlatformVideo
-  m_TagString: Untagged
+  m_TagString: Crate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Portal
   - Laser
+  - Crate
   layers:
   - Default
   - TransparentFX

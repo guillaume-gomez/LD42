@@ -47,11 +47,12 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
+        distToCenter = newDist;
+
         if (GameManager.instance.doingSetup || teleporting) {
             return;
         }
-
-        float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
 
         float move = Input.GetAxis("Horizontal");
         if(GameManager.instance.hasInvertedInput) {
@@ -60,26 +61,7 @@ public class Player : MonoBehaviour {
 
 
         Vector3 forceDirection = transform.position - center.transform.position;
-        if (distToCenter == newDist && !Input.GetButtonDown("Jump")) {
-            grounded = true;
-            jumpTimer = -1f;
-            if (atkTimer > 0) {
-                SwitchAnimeState(4);
-            }
-            else if (Input.GetAxisRaw("Vertical") < 0f && grounded)
-            {
-                SwitchAnimeState(3);
-            }
-            else if (Input.GetAxisRaw("Horizontal") == 0f)
-            {
-                SwitchAnimeState(0);
-            }
-            else
-            {
-                SwitchAnimeState(1);
-            }
-        }
-        distToCenter = newDist;
+
 
         rb2D.velocity = rb2D.velocity / 1.5f;
 
@@ -90,7 +72,7 @@ public class Player : MonoBehaviour {
             rb2D.AddForce(addX);
         }
 
-        if (Input.GetButtonDown("Jump") && jumpTimer <= 0f) {
+        if (Input.GetAxisRaw("Jump") != 0 && jumpTimer <= 0f) {
             grounded = false;
             jumpTimer = jumpBaseTimer;
             SwitchAnimeState(2);
@@ -103,7 +85,6 @@ public class Player : MonoBehaviour {
             if (Input.GetButton("Jump")) {
                 grounded = false;
                 rb2D.AddForce(forceDirection.normalized * (jumpSpeed * (jumpTimer / jumpBaseTimer)) * Time.fixedDeltaTime);
-                JumpSound();
             }
         }
 
@@ -117,6 +98,18 @@ public class Player : MonoBehaviour {
 
         if (atkTimer >= 0f)
             atkTimer -= Time.deltaTime;
+
+        if (atkTimer > 0)
+            SwitchAnimeState(4);
+        else if (jumpTimer > 0)
+            SwitchAnimeState(2);
+        else if (Input.GetAxisRaw("Vertical") < 0f && grounded)
+            SwitchAnimeState(3);
+        else if (Input.GetAxisRaw("Horizontal") == 0f)
+            SwitchAnimeState(0);
+        else
+            SwitchAnimeState(1);
+        
 
         animator.SetBool("grounded", grounded);
         animator.SetFloat ("velocityX", Mathf.Abs (move));
@@ -138,9 +131,8 @@ public class Player : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-
-        if (rb2D.OverlapPoint(collision.GetContact(0).point)) {
-            //Debug.Log("RESET");
+        Collider2D[] colliders = new Collider2D[1];
+        if (footCollider.GetContacts(colliders) > 0) {
             jumpTimer = -1f;
             grounded = true;
         }
@@ -172,6 +164,7 @@ public class Player : MonoBehaviour {
     public void onDeath() {
         animator.Play("PlayerDeath1");
         stopAnimations = true;
+        rb2D.velocity = new Vector2(0f, 0f);
         Invoke("callbackGameManagerOnDeath", 0.6f);
     }
 
@@ -186,6 +179,8 @@ public class Player : MonoBehaviour {
         animator.Play("TeleportationIn");
         teleporting = true;
         stopAnimations = true;
+
+        rb2D.velocity = new Vector2(0f, 0f);
         Invoke("onPortalEnd", 0.6f);
     }
 
