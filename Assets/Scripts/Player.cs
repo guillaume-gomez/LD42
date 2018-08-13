@@ -164,6 +164,7 @@ public class Player : MonoBehaviour {
     public void onDeath() {
         animator.Play("PlayerDeath1");
         stopAnimations = true;
+        teleporting = true;
         rb2D.velocity = new Vector2(0f, 0f);
         Invoke("callbackGameManagerOnDeath", 0.6f);
     }
