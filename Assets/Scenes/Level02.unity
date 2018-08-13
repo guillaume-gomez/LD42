@@ -2473,7 +2473,7 @@ Prefab:
     - target: {fileID: 212429072091938322, guid: 324687f1dc4ca5246ae5b91aec603d56,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4567755977345594, guid: 324687f1dc4ca5246ae5b91aec603d56, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2640,7 +2640,7 @@ Prefab:
     - target: {fileID: 212672538228426432, guid: 63adcfbd56187364db297d5ec596a39f,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4910705263984204, guid: 63adcfbd56187364db297d5ec596a39f, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3464,7 +3464,7 @@ Prefab:
     - target: {fileID: 212672538228426432, guid: 63adcfbd56187364db297d5ec596a39f,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4910705263984204, guid: 63adcfbd56187364db297d5ec596a39f, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
