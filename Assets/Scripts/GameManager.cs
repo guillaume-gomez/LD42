@@ -110,8 +110,8 @@ using UnityEngine.SceneManagement;
             isTransiting = false;
             SoundManager.instance.PlayMusic();
             if(level + 1 > nbLevels) {
-                // Go back main menu
-                SceneManager.LoadScene(0);
+                // Go back end credirs
+                SceneManager.LoadScene(6);
             } else {
                 //Add one to our level number.
                 level++;
