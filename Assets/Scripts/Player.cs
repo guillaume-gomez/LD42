@@ -145,11 +145,12 @@ public class Player : MonoBehaviour {
             grounded = true;
         }
 
-        if(collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser") {
-          onDeath();
-          GameManager.instance.GameOver("player_die");
-          //animation hurt
-          //Destroy(gameObject);
+        if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser") {
+            if (collision.gameObject.tag == "Laser"
+                && !collision.gameObject.GetComponent<Laser>().isActive())
+                return;
+
+            onDeath();
         }
     }
 
@@ -163,9 +164,15 @@ public class Player : MonoBehaviour {
     void Update () {
     }
 
+    public void callbackGameManagerOnDeath()
+    {
+        GameManager.instance.GameOver("player_die");
+    }
+
     public void onDeath() {
         animator.Play("PlayerDeath1");
         stopAnimations = true;
+        Invoke("callbackGameManagerOnDeath", 0.6f);
     }
 
     public void onPortalEnd()
