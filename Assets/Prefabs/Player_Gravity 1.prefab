@@ -142,6 +142,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5000
   jumpSpeed: 13000
+  jumpSounds:
+  - {fileID: 8300000, guid: d95c6f06b0616fa4081f80babf84b973, type: 3}
+  - {fileID: 8300000, guid: ba273bb5035419541ac4313dc933cfd5, type: 3}
+  - {fileID: 8300000, guid: d0b5070dd89bdeb45affefe3e88296c9, type: 3}
+  - {fileID: 8300000, guid: 17fcc768faad46f46900c17cd17d52ef, type: 3}
+  animeState: 0
 --- !u!212 &212144553631213996
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -13,6 +13,8 @@ public class Player : MonoBehaviour {
     public float moveSpeed = 20000f;
     public float jumpSpeed = 1f;
 
+    public AudioClip[] jumpSounds;
+
     protected Animator animator;
     protected SpriteRenderer spriteRenderer;
     protected Rigidbody2D rb2D;
@@ -55,8 +57,9 @@ public class Player : MonoBehaviour {
         if (distToCenter == newDist && !Input.GetButtonDown("Jump")) {
             grounded = true;
             jumpTimer = -1f;
-            if (atkTimer > 0)
+            if (atkTimer > 0) {
                 SwitchAnimeState(4);
+            }
             else if (Input.GetAxisRaw("Vertical") < 0f && grounded)
             {
                 SwitchAnimeState(3);
@@ -85,6 +88,7 @@ public class Player : MonoBehaviour {
             grounded = false;
             jumpTimer = jumpBaseTimer;
             SwitchAnimeState(2);
+            JumpSound();
         }
 
         rb2D.AddForce(forceDirection.normalized * 1f * Time.fixedDeltaTime);
@@ -93,6 +97,7 @@ public class Player : MonoBehaviour {
             if (Input.GetButton("Jump")) {
                 grounded = false;
                 rb2D.AddForce(forceDirection.normalized * (jumpSpeed * (jumpTimer / jumpBaseTimer)) * Time.fixedDeltaTime);
+                JumpSound();
             }
         }
 
@@ -114,6 +119,10 @@ public class Player : MonoBehaviour {
     void GroundCollision(Collision2D other)
     {
 
+    }
+
+    void JumpSound() {
+        SoundManager.instance.RandomizeSfx(jumpSounds);
     }
 
     void Flip()
