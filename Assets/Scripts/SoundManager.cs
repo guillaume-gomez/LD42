@@ -33,6 +33,13 @@ public class SoundManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void StopMusic() {
+        musicSource.Stop();
+    }
+
+    public void PlayMusic() {
+        musicSource.Play();
+    }
 
     //Used to play single sound clips.
     public void PlaySingle(AudioClip clip)

@@ -11,11 +11,14 @@ using UnityEngine.SceneManagement;
         public float levelStartDelay = 3.0f;
         public bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
         public bool hasInvertedInput = false;
+        public AudioClip winSound;
+        public AudioClip loseSound;
         private Text timerText;
         private GameObject beforeStartCanvas;
         private GameObject invertedInputCanvas;
         private CountDown myTimer;
         private LayerTypeEnum currentLayerType;
+        private GameObject playerRef;
 
         //Awake is always called before any Start functions
         void Awake()
@@ -35,7 +38,8 @@ using UnityEngine.SceneManagement;
             //boardScript = GetComponent<BoardManager>();
 
             //Call the InitGame function to initialize the first level
-            //InitGame();
+            playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
+            InitGame();
         }
 
         //This is called each time a scene is loaded.
@@ -44,7 +48,7 @@ using UnityEngine.SceneManagement;
             //Add one to our level number.
             level++;
             //Call InitGame to initialize our level.
-            InitGame();
+            //InitGame();
         }
 
         //Initializes the game for each level.
@@ -59,6 +63,9 @@ using UnityEngine.SceneManagement;
             invertedInputCanvas = GameObject.Find("InputGlitchInfo");
             invertedInputCanvas.SetActive(false);
             Invoke("HideBeforeStartCanvas", levelStartDelay);
+
+            playerRef.SetActive(true);
+
         }
 
         private void HideBeforeStartCanvas()
@@ -81,15 +88,20 @@ using UnityEngine.SceneManagement;
 
         private void ReloadLevel() {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+            SoundManager.instance.PlayMusic();
         }
 
         public void Finished(string message) {
+            SoundManager.instance.PlaySingle(winSound);
             myTimer.StopTimer();
         }
 
         public void GameOver(string message) {
             doingSetup = true;
-            Invoke("ReloadLevel", 1f);
+            SoundManager.instance.StopMusic();
+            SoundManager.instance.PlaySingle(loseSound);
+            playerRef.SetActive(false);
+            Invoke("ReloadLevel", 3f);
         }
 
         public void AddTime(float value) {
