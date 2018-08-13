@@ -23,7 +23,7 @@ using UnityEngine.SceneManagement;
         private GameObject camera;
 
 
-        private const int nbLevels = 2;
+        private const int nbLevels = 3;
 
         //Awake is always called before any Start functions
         void Awake()
@@ -51,7 +51,6 @@ using UnityEngine.SceneManagement;
         void OnLevelWasLoaded(int index)
         {
             if(index != 0) {
-                Debug.Log("Coucou" + index + " " + level);
                 playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
                 camera = GameObject.FindGameObjectWithTag("MainCamera");
                 invertedInputCanvas = GameObject.Find("InputGlitchInfo");
