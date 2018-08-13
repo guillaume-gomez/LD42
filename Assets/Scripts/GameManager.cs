@@ -39,7 +39,7 @@ using UnityEngine.SceneManagement;
 
             //Call the InitGame function to initialize the first level
             playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
-            InitGame();
+            //InitGame();
         }
 
         //This is called each time a scene is loaded.
@@ -48,7 +48,7 @@ using UnityEngine.SceneManagement;
             //Add one to our level number.
             level++;
             //Call InitGame to initialize our level.
-            //InitGame();
+            InitGame();
         }
 
         //Initializes the game for each level.
