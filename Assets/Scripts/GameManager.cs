@@ -43,8 +43,8 @@ using UnityEngine.SceneManagement;
             //boardScript = GetComponent<BoardManager>();
 
             // UNCOMMENT THOSE TWO LINES TO TEST YOUR SCENE AS STANDALONE
-            playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
-            InitGame();
+            //playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
+            //InitGame();
         }
 
         //This is called each time a scene is loaded.
