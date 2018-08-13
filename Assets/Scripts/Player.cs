@@ -77,9 +77,9 @@ public class Player : MonoBehaviour {
 
         rb2D.velocity = rb2D.velocity / 1.5f;
 
-        if (Input.GetAxis("Horizontal") != 0f && Input.GetAxis("Vertical") >= -0.8f)
+        if (move != 0f && Input.GetAxis("Vertical") >= -0.8f)
         {
-            float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+            float moveX = move * moveSpeed * Time.deltaTime;
             Vector3 addX = transform.right * moveX;
             rb2D.AddForce(addX);
         }
