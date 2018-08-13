@@ -15,6 +15,7 @@ using UnityEngine.SceneManagement;
         private GameObject beforeStartCanvas;
         private GameObject invertedInputCanvas;
         private CountDown myTimer;
+        private LayerTypeEnum currentLayerType;
 
         //Awake is always called before any Start functions
         void Awake()
@@ -100,6 +101,14 @@ using UnityEngine.SceneManagement;
             invertedInputCanvas.SetActive(true);
             Invoke("BackToNormalInput", timer);
             Invoke("DisableInvertedInputCanvas", 2.0f);
+        }
+
+        public void SetPlayerLayer(LayerTypeEnum layerType, uint layerIndex) {
+            if(currentLayerType != layerType)
+            {
+                SoundManager.instance.PlayAndSwitchMusic(layerType);
+            }
+            currentLayerType = layerType;
         }
 
         private void BackToNormalInput() {
