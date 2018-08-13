@@ -36,7 +36,7 @@ public class Key : MonoBehaviour {
             targetCollider.enabled = true;
             targetRenderer.enabled = true;
             animator.SetBool("Taken", true);
-            Invoke("Deactivate", 0.8f);
+            Invoke("Deactivate", 0.6f);
         }
     }
 }

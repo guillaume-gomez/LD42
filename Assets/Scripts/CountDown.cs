@@ -7,6 +7,12 @@ public class CountDown : Timer {
 
   public float timeLeft = 10.0f;
 
+  void Start () {
+    string minutes = (((int) timeLeft) / 60).ToString();
+    float secondsFloat = (timeLeft % 60);
+    string seconds = secondsFloat.ToString("f2");
+    timerText.text = minutes + ". " + seconds;
+  }
 
   // Update is called once per frame
   public override void Update () {
@@ -23,7 +29,7 @@ public class CountDown : Timer {
         StopTimer();
         return;
       }
-      timerText.text = minutes + ": " + seconds;
+      timerText.text = minutes + ". " + seconds;
     }
   }
 

@@ -25,6 +25,7 @@ public class Portal : MonoBehaviour {
             lastReset = 0f;
             portalTarget.lastReset = 0f;
             other.transform.position = portalTarget.transform.position;
+            other.gameObject.GetComponent<Player>().onPortal();
             platformManager.SetPlayerLayer(portalTarget.layer);
         }
     }

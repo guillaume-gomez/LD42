@@ -9,8 +9,7 @@ public class Timer : MonoBehaviour {
   protected float startTimer;
   public bool started = false;
 
-  // Use this for initialization
-  public virtual void Start () {
+  protected virtual void Start() {
   }
 
   // Update is called once per frame

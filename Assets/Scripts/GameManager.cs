@@ -7,14 +7,21 @@ using UnityEngine.SceneManagement;
     public class GameManager : MonoBehaviour
     {
         public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
-        private int level = 1;                                  //Current level number, expressed in game as "Day 1".
+        private int level = 0;                                  //Current level number, expressed in game as "Day 1".
         public float levelStartDelay = 3.0f;
         public bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
         public bool hasInvertedInput = false;
+        public AudioClip winSound;
+        public AudioClip loseSound;
         private Text timerText;
         private GameObject beforeStartCanvas;
         private GameObject invertedInputCanvas;
         private CountDown myTimer;
+        private LayerTypeEnum currentLayerType;
+        private GameObject playerRef;
+
+
+        private const int nbLevels = 2;
 
         //Awake is always called before any Start functions
         void Awake()
@@ -40,10 +47,16 @@ using UnityEngine.SceneManagement;
         //This is called each time a scene is loaded.
         void OnLevelWasLoaded(int index)
         {
-            //Add one to our level number.
-            level++;
-            //Call InitGame to initialize our level.
-            InitGame();
+            if(index != 0) {
+                playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
+                //Add one to our level number.
+                level++;
+                //Call InitGame to initialize our level.
+                InitGame();
+            } else {
+                //That means we go back in the main menu
+                SoundManager.instance.StopMusic();
+            }
         }
 
         //Initializes the game for each level.
@@ -56,8 +69,13 @@ using UnityEngine.SceneManagement;
             beforeStartCanvas = GameObject.Find("BeforeStartCanvas");
 
             invertedInputCanvas = GameObject.Find("InputGlitchInfo");
-            invertedInputCanvas.SetActive(false);
+            if(invertedInputCanvas) {
+                invertedInputCanvas.SetActive(false);
+            }
             Invoke("HideBeforeStartCanvas", levelStartDelay);
+
+            playerRef.SetActive(true);
+
         }
 
         private void HideBeforeStartCanvas()
@@ -80,15 +98,39 @@ using UnityEngine.SceneManagement;
 
         private void ReloadLevel() {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+            SoundManager.instance.PlayMusic();
         }
 
+        private void LoadNextLevel() {
+            SoundManager.instance.PlayMusic();
+            if(level + 1 > nbLevels) {
+                // Go back main menu
+                SceneManager.LoadScene(0);
+            } else {
+                SceneManager.LoadScene(level + 1);
+            }
+        }
+
+
         public void Finished(string message) {
-            myTimer.StopTimer();
+            if(!doingSetup) {
+                doingSetup = true;
+                SoundManager.instance.StopMusic();
+                SoundManager.instance.PlaySingle(winSound);
+                myTimer.StopTimer();
+                Invoke("LoadNextLevel", 3f);
+            }
         }
 
         public void GameOver(string message) {
-            doingSetup = true;
-            Invoke("ReloadLevel", 1f);
+            if(!doingSetup) {
+                doingSetup = true;
+                SoundManager.instance.StopMusic();
+                SoundManager.instance.PlaySingle(loseSound);
+                playerRef.SetActive(false);
+                doingSetup = true;
+                Invoke("ReloadLevel", 3f);
+            }
         }
 
         public void AddTime(float value) {
@@ -97,9 +139,17 @@ using UnityEngine.SceneManagement;
 
         public void InvertedInput(float timer) {
             hasInvertedInput = true;
-            invertedInputCanvas.SetActive(true);
+            //invertedInputCanvas.SetActive(true);
             Invoke("BackToNormalInput", timer);
-            Invoke("DisableInvertedInputCanvas", 2.0f);
+            Invoke("DisableInvertedInputCanvas", 4.8f);
+        }
+
+        public void SetPlayerLayer(LayerTypeEnum layerType, uint layerIndex) {
+            if(currentLayerType != layerType)
+            {
+                SoundManager.instance.PlayAndSwitchMusic(layerType);
+            }
+            currentLayerType = layerType;
         }
 
         private void BackToNormalInput() {
@@ -107,7 +157,7 @@ using UnityEngine.SceneManagement;
         }
 
         private void DisableInvertedInputCanvas() {
-            invertedInputCanvas.SetActive(false);
+            //invertedInputCanvas.SetActive(false);
         }
 
 

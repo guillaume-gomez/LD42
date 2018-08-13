@@ -13,6 +13,8 @@ public class Player : MonoBehaviour {
     public float moveSpeed = 20000f;
     public float jumpSpeed = 1f;
 
+    public AudioClip[] jumpSounds;
+
     protected Animator animator;
     protected SpriteRenderer spriteRenderer;
     protected Rigidbody2D rb2D;
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour {
     protected float atkTimer = 0f;
 
     private bool stopAnimations = false;
+    private bool teleporting = false;
 
     protected virtual void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -40,22 +43,29 @@ public class Player : MonoBehaviour {
     }
 
     void Start () {
-          center = GameObject.FindGameObjectsWithTag("Gravity")[0];
+          center = GameObject.FindGameObjectWithTag("Gravity");
     }
 
     void FixedUpdate() {
-        if (GameManager.instance.doingSetup) {
+        if (GameManager.instance.doingSetup || teleporting) {
             return;
         }
 
         float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
+
         float move = Input.GetAxis("Horizontal");
+        if(GameManager.instance.hasInvertedInput) {
+            move = -move;
+        }
+
+
         Vector3 forceDirection = transform.position - center.transform.position;
         if (distToCenter == newDist && !Input.GetButtonDown("Jump")) {
             grounded = true;
             jumpTimer = -1f;
-            if (atkTimer > 0)
+            if (atkTimer > 0) {
                 SwitchAnimeState(4);
+            }
             else if (Input.GetAxisRaw("Vertical") < 0f && grounded)
             {
                 SwitchAnimeState(3);
@@ -73,9 +83,9 @@ public class Player : MonoBehaviour {
 
         rb2D.velocity = rb2D.velocity / 1.5f;
 
-        if (Input.GetAxis("Horizontal") != 0f && Input.GetAxis("Vertical") >= -0.8f)
+        if (move != 0f && Input.GetAxis("Vertical") >= -0.8f)
         {
-            float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+            float moveX = move * moveSpeed * Time.deltaTime;
             Vector3 addX = transform.right * moveX;
             rb2D.AddForce(addX);
         }
@@ -84,6 +94,7 @@ public class Player : MonoBehaviour {
             grounded = false;
             jumpTimer = jumpBaseTimer;
             SwitchAnimeState(2);
+            JumpSound();
         }
 
         rb2D.AddForce(forceDirection.normalized * 1f * Time.fixedDeltaTime);
@@ -92,6 +103,7 @@ public class Player : MonoBehaviour {
             if (Input.GetButton("Jump")) {
                 grounded = false;
                 rb2D.AddForce(forceDirection.normalized * (jumpSpeed * (jumpTimer / jumpBaseTimer)) * Time.fixedDeltaTime);
+                JumpSound();
             }
         }
 
@@ -115,6 +127,10 @@ public class Player : MonoBehaviour {
 
     }
 
+    void JumpSound() {
+        SoundManager.instance.RandomizeSfx(jumpSounds);
+    }
+
     void Flip()
     {
       facingRight = !facingRight;
@@ -129,11 +145,12 @@ public class Player : MonoBehaviour {
             grounded = true;
         }
 
-        if(collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser") {
-          onDeath();
-          GameManager.instance.GameOver("player_die");
-          //animation hurt
-          //Destroy(gameObject);
+        if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser") {
+            if (collision.gameObject.tag == "Laser"
+                && !collision.gameObject.GetComponent<Laser>().isActive())
+                return;
+
+            onDeath();
         }
     }
 
@@ -147,9 +164,29 @@ public class Player : MonoBehaviour {
     void Update () {
     }
 
+    public void callbackGameManagerOnDeath()
+    {
+        GameManager.instance.GameOver("player_die");
+    }
+
     public void onDeath() {
         animator.Play("PlayerDeath1");
         stopAnimations = true;
+        Invoke("callbackGameManagerOnDeath", 0.6f);
+    }
+
+    public void onPortalEnd()
+    {
+        animator.Play("IdlePlayer");
+        teleporting = false;
+        stopAnimations = false;
+    }
+    public void onPortal()
+    {
+        animator.Play("TeleportationIn");
+        teleporting = true;
+        stopAnimations = true;
+        Invoke("onPortalEnd", 0.6f);
     }
 
     void SwitchAnimeState(int change) {
