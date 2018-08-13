@@ -8,7 +8,6 @@ public class CountDown : Timer {
   public float timeLeft = 10.0f;
 
   void Start () {
-    Debug.Log("jkfjd");
     string minutes = (((int) timeLeft) / 60).ToString();
     float secondsFloat = (timeLeft % 60);
     string seconds = secondsFloat.ToString("f2");
