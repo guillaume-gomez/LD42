@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
         public float levelStartDelay = 3.0f;
         public bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
         public bool hasInvertedInput = false;
+        public bool isTransiting = false;
         public AudioClip winSound;
         public AudioClip loseSound;
         private Text timerText;
@@ -19,6 +20,7 @@ using UnityEngine.SceneManagement;
         private CountDown myTimer;
         private LayerTypeEnum currentLayerType;
         private GameObject playerRef;
+        private GameObject camera;
 
 
         private const int nbLevels = 2;
@@ -40,8 +42,9 @@ using UnityEngine.SceneManagement;
             //Get a component reference to the attached BoardManager script
             //boardScript = GetComponent<BoardManager>();
 
-            //Call the InitGame function to initialize the first level
-            //InitGame();
+            // UNCOMMENT THOSE TWO LINES TO TEST YOUR SCENE AS STANDALONE
+            playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
+            InitGame();
         }
 
         //This is called each time a scene is loaded.
@@ -50,6 +53,7 @@ using UnityEngine.SceneManagement;
             if(index != 0) {
                 Debug.Log("Coucou" + index + " " + level);
                 playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
+                camera = GameObject.FindGameObjectWithTag("MainCamera");
                 invertedInputCanvas = GameObject.Find("InputGlitchInfo");
                 //Call InitGame to initialize our level.
                 InitGame();
@@ -104,6 +108,7 @@ using UnityEngine.SceneManagement;
         }
 
         private void LoadNextLevel() {
+            isTransiting = false;
             SoundManager.instance.PlayMusic();
             if(level + 1 > nbLevels) {
                 // Go back main menu
@@ -122,6 +127,7 @@ using UnityEngine.SceneManagement;
                 SoundManager.instance.StopMusic();
                 SoundManager.instance.PlaySingle(winSound);
                 myTimer.StopTimer();
+                isTransiting = true;
                 Invoke("LoadNextLevel", 3f);
             }
         }
