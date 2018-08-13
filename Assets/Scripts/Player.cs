@@ -52,7 +52,13 @@ public class Player : MonoBehaviour {
         }
 
         float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
+
         float move = Input.GetAxis("Horizontal");
+        if(GameManager.instance.hasInvertedInput) {
+            move = -move;
+        }
+
+
         Vector3 forceDirection = transform.position - center.transform.position;
         if (distToCenter == newDist && !Input.GetButtonDown("Jump")) {
             grounded = true;
