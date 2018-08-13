@@ -47,10 +47,12 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
+        distToCenter = newDist;
+
         if (GameManager.instance.doingSetup || teleporting) {
             return;
         }
-        float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
 
         float move = Input.GetAxis("Horizontal");
         if(GameManager.instance.hasInvertedInput) {
@@ -60,7 +62,6 @@ public class Player : MonoBehaviour {
 
         Vector3 forceDirection = transform.position - center.transform.position;
 
-        distToCenter = newDist;
 
         rb2D.velocity = rb2D.velocity / 1.5f;
 
@@ -163,6 +164,7 @@ public class Player : MonoBehaviour {
     public void onDeath() {
         animator.Play("PlayerDeath1");
         stopAnimations = true;
+        rb2D.velocity = new Vector2(0f, 0f);
         Invoke("callbackGameManagerOnDeath", 0.6f);
     }
 
@@ -177,6 +179,8 @@ public class Player : MonoBehaviour {
         animator.Play("TeleportationIn");
         teleporting = true;
         stopAnimations = true;
+
+        rb2D.velocity = new Vector2(0f, 0f);
         Invoke("onPortalEnd", 0.6f);
     }
 

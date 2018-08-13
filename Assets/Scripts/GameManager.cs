@@ -41,7 +41,7 @@ using UnityEngine.SceneManagement;
             //boardScript = GetComponent<BoardManager>();
 
             //Call the InitGame function to initialize the first level
-            //InitGame();
+            InitGame();
         }
 
         //This is called each time a scene is loaded.
