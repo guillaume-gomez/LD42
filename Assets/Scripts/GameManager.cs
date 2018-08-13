@@ -20,6 +20,9 @@ using UnityEngine.SceneManagement;
         private LayerTypeEnum currentLayerType;
         private GameObject playerRef;
 
+
+        private const int nbLevels = 2;
+
         //Awake is always called before any Start functions
         void Awake()
         {
@@ -44,15 +47,16 @@ using UnityEngine.SceneManagement;
         //This is called each time a scene is loaded.
         void OnLevelWasLoaded(int index)
         {
-            Debug.Log("bite");
-            if(index == level) {
-                Debug.Log("cul");
+            if(index != 0) {
+                playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
+                //Add one to our level number.
+                level++;
+                //Call InitGame to initialize our level.
+                InitGame();
+            } else {
+                //That means we go back in the main menu
+                SoundManager.instance.StopMusic();
             }
-            playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
-            //Add one to our level number.
-            level++;
-            //Call InitGame to initialize our level.
-            InitGame();
         }
 
         //Initializes the game for each level.
@@ -97,20 +101,36 @@ using UnityEngine.SceneManagement;
             SoundManager.instance.PlayMusic();
         }
 
+        private void LoadNextLevel() {
+            SoundManager.instance.PlayMusic();
+            if(level + 1 > nbLevels) {
+                // Go back main menu
+                SceneManager.LoadScene(0);
+            } else {
+                SceneManager.LoadScene(level + 1);
+            }
+        }
+
+
         public void Finished(string message) {
-            SoundManager.instance.StopMusic();
-            SoundManager.instance.PlaySingle(winSound);
-            myTimer.StopTimer();
-            //SoundManager.instance.PlayMusic();
-            SceneManager.LoadScene(level + 1);
+            if(!doingSetup) {
+                doingSetup = true;
+                SoundManager.instance.StopMusic();
+                SoundManager.instance.PlaySingle(winSound);
+                myTimer.StopTimer();
+                Invoke("LoadNextLevel", 3f);
+            }
         }
 
         public void GameOver(string message) {
-            doingSetup = true;
-            SoundManager.instance.StopMusic();
-            SoundManager.instance.PlaySingle(loseSound);
-            playerRef.SetActive(false);
-            Invoke("ReloadLevel", 3f);
+            if(!doingSetup) {
+                doingSetup = true;
+                SoundManager.instance.StopMusic();
+                SoundManager.instance.PlaySingle(loseSound);
+                playerRef.SetActive(false);
+                doingSetup = true;
+                Invoke("ReloadLevel", 3f);
+            }
         }
 
         public void AddTime(float value) {
@@ -119,7 +139,7 @@ using UnityEngine.SceneManagement;
 
         public void InvertedInput(float timer) {
             hasInvertedInput = true;
-            invertedInputCanvas.SetActive(true);
+            //invertedInputCanvas.SetActive(true);
             Invoke("BackToNormalInput", timer);
             Invoke("DisableInvertedInputCanvas", 4.8f);
         }
@@ -137,7 +157,7 @@ using UnityEngine.SceneManagement;
         }
 
         private void DisableInvertedInputCanvas() {
-            invertedInputCanvas.SetActive(false);
+            //invertedInputCanvas.SetActive(false);
         }
 
 
