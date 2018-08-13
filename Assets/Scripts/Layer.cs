@@ -62,6 +62,7 @@ public class Layer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (GameManager.instance.doingSetup) { return; }
         transform.Rotate(0,0,rotationSpeed);
 
         if (active)
