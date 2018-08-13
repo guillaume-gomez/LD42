@@ -50,7 +50,6 @@ public class Player : MonoBehaviour {
         if (GameManager.instance.doingSetup || teleporting) {
             return;
         }
-
         float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
 
         float move = Input.GetAxis("Horizontal");
@@ -60,7 +59,7 @@ public class Player : MonoBehaviour {
 
 
         Vector3 forceDirection = transform.position - center.transform.position;
-        if (distToCenter == newDist && !Input.GetButtonDown("Jump")) {
+        if (distToCenter == newDist && jumpTimer <= 0) {
             grounded = true;
             jumpTimer = -1f;
             if (atkTimer > 0) {
@@ -90,7 +89,7 @@ public class Player : MonoBehaviour {
             rb2D.AddForce(addX);
         }
 
-        if (Input.GetButtonDown("Jump") && jumpTimer <= 0f) {
+        if (Input.GetAxisRaw("Jump") != 0 && jumpTimer <= 0f) {
             grounded = false;
             jumpTimer = jumpBaseTimer;
             SwitchAnimeState(2);
@@ -103,7 +102,6 @@ public class Player : MonoBehaviour {
             if (Input.GetButton("Jump")) {
                 grounded = false;
                 rb2D.AddForce(forceDirection.normalized * (jumpSpeed * (jumpTimer / jumpBaseTimer)) * Time.fixedDeltaTime);
-                JumpSound();
             }
         }
 
@@ -138,9 +136,8 @@ public class Player : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-
-        if (rb2D.OverlapPoint(collision.GetContact(0).point)) {
-            //Debug.Log("RESET");
+        Collider2D[] colliders = new Collider2D[1];
+        if (footCollider.GetContacts(colliders) > 0) {
             jumpTimer = -1f;
             grounded = true;
         }
