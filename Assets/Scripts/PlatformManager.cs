@@ -14,17 +14,18 @@ public class PlatformManager : MonoBehaviour {
 
     public void SetPlayerLayer(uint layerIndex) {
         playerLayer = layerIndex;
-        // what a wonderful patch don't you think ? :)
-        if(layerIndex < layers.Length) {
-            GameManager.instance.SetPlayerLayer(layers[playerLayer].rules.layerType , layerIndex);
-        }
+        if(layers != null) {
+            // what a wonderful patch don't you think ? :)
+            if(layerIndex < layers.Length) {
+                GameManager.instance.SetPlayerLayer(layers[playerLayer].rules.layerType , layerIndex);
+            }
 
-        for (uint i = 0; i < layers.Length; i++) {
-            if (layers[i].index == playerLayer)
-                layers[i].Activate();
-            else
-                layers[i].Deactivate();
+            for (uint i = 0; i < layers.Length; i++) {
+                if (layers[i].index == playerLayer)
+                    layers[i].Activate();
+                else
+                    layers[i].Deactivate();
+            }
         }
-
     }
 }
