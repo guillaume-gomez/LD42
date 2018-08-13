@@ -9,7 +9,6 @@ public class EnemyGreedy : MonoBehaviour {
   private float originalScale = 0.7f;
   private float currentScale;
   private int direction = 1;
-  private float step;
   protected Rigidbody2D rb2D;
 
 
