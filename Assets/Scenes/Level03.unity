@@ -4241,7 +4241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lengthAnimation: 1
-  maxSize: 6
+  maxSize: 5
 --- !u!114 &1467404965
 MonoBehaviour:
   m_ObjectHideFlags: 0
