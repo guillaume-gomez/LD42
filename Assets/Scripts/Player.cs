@@ -137,7 +137,7 @@ public class Player : MonoBehaviour {
             grounded = true;
         }
 
-        if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser") {
+        if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser" || collision.gameObject.tag == "CustomEnemy") {
             if (collision.gameObject.tag == "Laser"
                 && !collision.gameObject.GetComponent<Laser>().isActive())
                 return;
