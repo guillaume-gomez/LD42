@@ -51,7 +51,6 @@ using UnityEngine.SceneManagement;
         void OnLevelWasLoaded(int index)
         {
             if(index != 0) {
-                Debug.Log("Coucou" + index + " " + level);
                 playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
                 camera = GameObject.FindGameObjectWithTag("MainCamera");
                 invertedInputCanvas = GameObject.Find("InputGlitchInfo");
