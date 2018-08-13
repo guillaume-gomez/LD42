@@ -59,25 +59,7 @@ public class Player : MonoBehaviour {
 
 
         Vector3 forceDirection = transform.position - center.transform.position;
-        if (distToCenter == newDist && jumpTimer <= 0) {
-            grounded = true;
-            jumpTimer = -1f;
-            if (atkTimer > 0) {
-                SwitchAnimeState(4);
-            }
-            else if (Input.GetAxisRaw("Vertical") < 0f && grounded)
-            {
-                SwitchAnimeState(3);
-            }
-            else if (Input.GetAxisRaw("Horizontal") == 0f)
-            {
-                SwitchAnimeState(0);
-            }
-            else
-            {
-                SwitchAnimeState(1);
-            }
-        }
+
         distToCenter = newDist;
 
         rb2D.velocity = rb2D.velocity / 1.5f;
@@ -115,6 +97,18 @@ public class Player : MonoBehaviour {
 
         if (atkTimer >= 0f)
             atkTimer -= Time.deltaTime;
+
+        if (atkTimer > 0)
+            SwitchAnimeState(4);
+        else if (jumpTimer > 0)
+            SwitchAnimeState(2);
+        else if (Input.GetAxisRaw("Vertical") < 0f && grounded)
+            SwitchAnimeState(3);
+        else if (Input.GetAxisRaw("Horizontal") == 0f)
+            SwitchAnimeState(0);
+        else
+            SwitchAnimeState(1);
+        
 
         animator.SetBool("grounded", grounded);
         animator.SetFloat ("velocityX", Mathf.Abs (move));
