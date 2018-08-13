@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
     public class GameManager : MonoBehaviour
     {
         public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
-        private int level = 1;                                  //Current level number, expressed in game as "Day 1".
+        private int level = 0;                                  //Current level number, expressed in game as "Day 1".
         public float levelStartDelay = 3.0f;
         public bool doingSetup = true;                         //Boolean to check if we're setting up board, prevent Player from moving during setup.
         public bool hasInvertedInput = false;
@@ -38,13 +38,17 @@ using UnityEngine.SceneManagement;
             //boardScript = GetComponent<BoardManager>();
 
             //Call the InitGame function to initialize the first level
-            playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
-            InitGame();
+            //InitGame();
         }
 
         //This is called each time a scene is loaded.
         void OnLevelWasLoaded(int index)
         {
+            Debug.Log("bite");
+            if(index == level) {
+                Debug.Log("cul");
+            }
+            playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
             //Add one to our level number.
             level++;
             //Call InitGame to initialize our level.
@@ -61,7 +65,9 @@ using UnityEngine.SceneManagement;
             beforeStartCanvas = GameObject.Find("BeforeStartCanvas");
 
             invertedInputCanvas = GameObject.Find("InputGlitchInfo");
-            invertedInputCanvas.SetActive(false);
+            if(invertedInputCanvas) {
+                invertedInputCanvas.SetActive(false);
+            }
             Invoke("HideBeforeStartCanvas", levelStartDelay);
 
             playerRef.SetActive(true);
@@ -95,6 +101,8 @@ using UnityEngine.SceneManagement;
             SoundManager.instance.StopMusic();
             SoundManager.instance.PlaySingle(winSound);
             myTimer.StopTimer();
+            //SoundManager.instance.PlayMusic();
+            SceneManager.LoadScene(level + 1);
         }
 
         public void GameOver(string message) {
