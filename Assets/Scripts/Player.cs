@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
     protected float atkTimer = 0f;
 
     private bool stopAnimations = false;
+    private bool teleporting = false;
 
     protected virtual void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (!GameManager.instance.doingSetup) {
+        if (!GameManager.instance.doingSetup || teleporting) {
             return;
         }
 
@@ -150,6 +151,20 @@ public class Player : MonoBehaviour {
     public void onDeath() {
         animator.Play("PlayerDeath1");
         stopAnimations = true;
+    }
+
+    public void onPortalEnd()
+    {
+        animator.Play("IdlePlayer");
+        teleporting = false;
+        stopAnimations = false;
+    }
+    public void onPortal()
+    {
+        animator.Play("TeleportationIn");
+        teleporting = true;
+        stopAnimations = true;
+        Invoke("onPortalEnd", 0.6f);
     }
 
     void SwitchAnimeState(int change) {
