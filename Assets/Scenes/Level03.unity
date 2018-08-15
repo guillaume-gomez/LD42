@@ -152,10 +152,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114950894659973284, guid: 5131e3ac7212698489337cd8ba1cee74,
+    - target: {fileID: 114411246965458310, guid: 5131e3ac7212698489337cd8ba1cee74,
         type: 2}
       propertyPath: timeLeft
-      value: 200
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5131e3ac7212698489337cd8ba1cee74, type: 2}

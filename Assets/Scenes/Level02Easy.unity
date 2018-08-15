@@ -462,7 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 187754655}
   started: 0
-  timeLeft: 20
+  timeLeft: 60
 --- !u!114 &187754655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,6 +517,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 0.1
+  maxAlpha: 1
+  minAlpha: 0
 --- !u!1001 &232110819
 Prefab:
   m_ObjectHideFlags: 0
