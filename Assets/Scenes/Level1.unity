@@ -653,7 +653,7 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f7dfb78e44feb746a0aee0c0d154d54, type: 2}
   m_IsPrefabAsset: 0
---- !u!1001 &566375476
+--- !u!1001 &624839331
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2879,7 +2879,7 @@ Prefab:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1781468624455170, guid: 5131e3ac7212698489337cd8ba1cee74,
     type: 2}
-  m_PrefabInternal: {fileID: 566375476}
+  m_PrefabInternal: {fileID: 624839331}
 --- !u!1001 &2053830303
 Prefab:
   m_ObjectHideFlags: 0
