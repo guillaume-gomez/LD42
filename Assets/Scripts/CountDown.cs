@@ -6,8 +6,13 @@ using UnityEngine.UI;
 public class CountDown : Timer {
 
   public float timeLeft = 10.0f;
+  private BlinkingText blinkingText;
+  private bool isBlinking;
 
   void Start () {
+    blinkingText = GetComponent<BlinkingText>();
+    isBlinking = false;
+
     string minutes = (((int) timeLeft) / 60).ToString();
     float secondsFloat = (timeLeft % 60);
     string seconds = secondsFloat.ToString("f2");
@@ -28,6 +33,11 @@ public class CountDown : Timer {
         GameManager.instance.GameOver("timer_over");
         StopTimer();
         return;
+      }
+
+      if(secondsFloat < 5.0f && !isBlinking) {
+        isBlinking = true;
+        blinkingText.StartBlinking();
       }
       timerText.text = minutes + ". " + seconds;
     }
