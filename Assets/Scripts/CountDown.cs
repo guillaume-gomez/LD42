@@ -12,7 +12,6 @@ public class CountDown : Timer {
   void Start () {
     blinkingText = GetComponent<BlinkingText>();
     isBlinking = false;
-    //blinkingText.StopBlinking();
 
     string minutes = (((int) timeLeft) / 60).ToString();
     float secondsFloat = (timeLeft % 60);
