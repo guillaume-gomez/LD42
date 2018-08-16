@@ -21,9 +21,11 @@ using UnityEngine.SceneManagement;
         private LayerTypeEnum currentLayerType;
         private GameObject playerRef;
         private GameObject camera;
+        private int nbRetry = 0;
 
 
         private const int nbLevels = 3;
+        private const float timerStep = 5f;
 
         //Awake is always called before any Start functions
         void Awake()
@@ -43,8 +45,8 @@ using UnityEngine.SceneManagement;
             //boardScript = GetComponent<BoardManager>();
 
             // UNCOMMENT THOSE TWO LINES TO TEST YOUR SCENE AS STANDALONE
-            //playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
-            //InitGame();
+            playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
+            InitGame();
         }
 
         //This is called each time a scene is loaded.
@@ -73,7 +75,9 @@ using UnityEngine.SceneManagement;
             beforeStartCanvas = GameObject.Find("BeforeStartCanvas");
             invertedInputCanvas = GameObject.Find("InputGlitchInfo");
 
-            Invoke("HideBeforeStartCanvas", levelStartDelay);
+            float startDelay = (nbRetry >= 1) ? 0.01f : levelStartDelay;
+
+            Invoke("HideBeforeStartCanvas", startDelay);
             Invoke("HideInputGlitchInfo", 0.001f);
 
             playerRef.SetActive(true);
@@ -126,6 +130,7 @@ using UnityEngine.SceneManagement;
         public void Finished(string message) {
             if(!doingSetup) {
                 doingSetup = true;
+                nbRetry = 0;
                 SoundManager.instance.StopMusic();
                 SoundManager.instance.PlaySingle(winSound);
                 myTimer.StopTimer();
@@ -142,12 +147,17 @@ using UnityEngine.SceneManagement;
                 //invertedInputCanvas.SetActive(true);
                 playerRef.SetActive(false);
                 doingSetup = true;
+                nbRetry = nbRetry + 1;
                 Invoke("ReloadLevel", 3f);
             }
         }
 
-        public void AddTime(float value) {
-            myTimer.AddTime(value);
+        public void AddTime() {
+            myTimer.AddTime(timerStep);
+        }
+
+        public void ReduceTime() {
+            myTimer.AddTime(-timerStep);
         }
 
         public void InvertedInput(float timer) {
