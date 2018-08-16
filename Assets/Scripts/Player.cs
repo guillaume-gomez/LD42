@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MoveableObject {
 
     bool facingRight = true;
     bool grounded = false;
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
         float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
         distToCenter = newDist;
 
-        if (GameManager.instance.doingSetup || teleporting) {
+        if (!CanMove() || teleporting) {
             return;
         }
 

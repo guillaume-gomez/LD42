@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MoveableObject {
 
     public float movementSpeed = 800f;
     private GameObject center;
@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-        if(!GameManager.instance.doingSetup) {
+        if(CanMove()) {
           //Vector3 forceDirection = transform.position - center.transform.position;
           rb2D.velocity = rb2D.velocity / 1.5f;
 

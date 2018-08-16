@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyJump : MonoBehaviour
+public class EnemyJump : MoveableObject
 {
 
     private GameObject center;
@@ -17,7 +17,7 @@ public class EnemyJump : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!GameManager.instance.doingSetup)
+        if (CanMove())
             transform.position += (Time.deltaTime / 5f) * up * (center.transform.position - transform.position);
     }
 
