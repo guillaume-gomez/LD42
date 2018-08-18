@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGreedy : MonoBehaviour {
+public class EnemyGreedy : MoveableObject {
 
     public float slowAnimationBy = 3f;
     public float maxScale = 1.5f;
-    private float scaleUp = 1f; 
+    private float scaleUp = 1f;
     // Use this for initialization
     void Start () {
     }
 
     void Update () {
-      if(!GameManager.instance.doingSetup) {
+        if(CanMove()) {
             if (transform.localScale.x >= maxScale)
                 scaleUp = -1f;
             else if (transform.localScale.x <= 0.3f)

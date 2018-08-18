@@ -45,5 +45,24 @@ public class CountDown : Timer {
 
   public void AddTime(float seconds) {
     timeLeft += seconds;
+    if(seconds > 0) {
+      GotBonus();
+    } else {
+      GotMalus();
+    }
+  }
+
+  private void GotMalus() {
+    timerText.color = Color.red;
+    Invoke("WhiteText", 2.0f);
+  }
+
+  private void GotBonus() {
+    timerText.color = Color.green;
+    Invoke("WhiteText", 2.0f);
+  }
+
+  private void WhiteText() {
+    timerText.color = Color.white;
   }
 }

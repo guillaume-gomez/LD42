@@ -14,6 +14,7 @@ public class MalusAudio : Malus {
             layer.onMalus();
             collisionBox2D.enabled = false;
             animator.enabled = true;
+            GameManager.instance.ReduceTime();
             Invoke("ResetAfterAnimation", 0.6f);
             Invoke("ResetAfterGlitch", 1.5f);
             cameraAffected.gameObject.GetComponent<PostProcessingBehaviour>().profile = profile_active;

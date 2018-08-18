@@ -45,7 +45,7 @@ public class LayerRulesAndState
     }
 }
 
-public class Layer : MonoBehaviour {
+public class Layer : MoveableObject {
 
     // The Plateforms of the layer
     public IAbstractPlatform[] plateforms;
@@ -62,7 +62,7 @@ public class Layer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (GameManager.instance.doingSetup) { return; }
+        if (!CanMove()) { return; }
         transform.Rotate(0,0,rotationSpeed);
 
         if (active)

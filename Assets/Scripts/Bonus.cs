@@ -28,6 +28,7 @@ public class Bonus : MonoBehaviour {
         {
             collisionBox2D.enabled = false;
             animator.enabled = true;
+            GameManager.instance.AddTime();
             Invoke("ResetAfterAnimation", 0.4f);
         }
     }
