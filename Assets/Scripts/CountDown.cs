@@ -9,7 +9,7 @@ public class CountDown : Timer {
   private BlinkingText blinkingText;
   private bool isBlinking;
 
-  void Start () {
+  protected override void Start () {
     blinkingText = GetComponent<BlinkingText>();
     isBlinking = false;
 
@@ -20,7 +20,7 @@ public class CountDown : Timer {
   }
 
   // Update is called once per frame
-  public override void Update () {
+  protected override void Update () {
     if(started) {
       float t = timeLeft - (Time.time - startTimer);
 

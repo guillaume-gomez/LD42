@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour {
   }
 
   // Update is called once per frame
-  public virtual void Update () {
+  protected virtual void Update () {
     if(started) {
       float t = Time.time - startTimer;
 
