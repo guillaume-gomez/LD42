@@ -20,12 +20,23 @@ using UnityEngine.SceneManagement;
         private CountDown myTimer;
         private LayerTypeEnum currentLayerType;
         private GameObject playerRef;
-        private GameObject camera;
+        private GameObject mainCamera;
         private int nbRetry = 0;
 
 
         private const int nbLevels = 3;
         private const float timerStep = 5f;
+
+        public int Level {
+            get
+            {
+                return instance.level;
+            }
+            set
+            {
+                instance.level = value;
+            }
+        }
 
         //Awake is always called before any Start functions
         void Awake()
@@ -55,7 +66,7 @@ using UnityEngine.SceneManagement;
             // hardcoded index about credit and main menu
             if(index != 0 || index != 6) {
                 playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
-                camera = GameObject.FindGameObjectWithTag("MainCamera");
+                mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
                 invertedInputCanvas = GameObject.Find("InputGlitchInfo");
                 //Call InitGame to initialize our level.
                 InitGame();
