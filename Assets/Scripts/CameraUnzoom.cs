@@ -10,13 +10,13 @@ public class CameraUnzoom : MonoBehaviour {
   private float originalSize;
   private float currentSize;
   private float distanceTarget;
-  private Camera camera;
+  private Camera mainCamera;
 
 
   // Use this for initialization
   void Start () {
-    camera = GetComponent<Camera>();
-    originalSize = camera.orthographicSize;
+    mainCamera = GetComponent<Camera>();
+    originalSize = mainCamera.orthographicSize;
     currentSize = originalSize;
     distanceTarget = Vector3.Distance(transform.position, target);
   }
@@ -27,7 +27,7 @@ public class CameraUnzoom : MonoBehaviour {
       if(currentSize > maxSize) {
         return;
       }
-      camera.orthographicSize = currentSize;
+      mainCamera.orthographicSize = currentSize;
 
       //
       if(moveToTarget) {
