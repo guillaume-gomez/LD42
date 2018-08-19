@@ -20,7 +20,6 @@ using UnityEngine.SceneManagement;
         private CountDown myTimer;
         private LayerTypeEnum currentLayerType;
         private GameObject playerRef;
-        private GameObject mainCamera;
         private int nbRetry = 0;
 
 
@@ -60,13 +59,24 @@ using UnityEngine.SceneManagement;
             InitGame();
         }
 
+        void OnEnable()
+        {
+            //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+            SceneManager.sceneLoaded += OnLevelFinishedLoading;
+        }
+
+        void OnDisable()
+        {
+            //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
+            SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+        }
+
         //This is called each time a scene is loaded.
-        void OnLevelWasLoaded(int index)
+        void  OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)//OnLevelWasLoaded(int index)
         {
             // hardcoded index about credit and main menu
-            if(index != 0 || index != 6) {
+            if(scene.buildIndex != 0 && scene.buildIndex != 6) {
                 playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
-                mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
                 invertedInputCanvas = GameObject.Find("InputGlitchInfo");
                 //Call InitGame to initialize our level.
                 InitGame();
