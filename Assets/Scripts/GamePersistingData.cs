@@ -18,7 +18,8 @@ public class GamePersistingData : MonoBehaviour {
 
   public void Save() {
     BinaryFormatter bf = new BinaryFormatter();
-    FileStream file = File.Create(Application.persistentDataPath + "gamerInfo.dat");
+    Debug.Log(Application.persistentDataPath + "/gamerInfo.dat");
+    FileStream file = File.Create(Application.persistentDataPath + "/gamerInfo.dat");
 
     GameData data = new GameData();
     data.currentLevel = GameManager.instance.Level;
@@ -29,9 +30,9 @@ public class GamePersistingData : MonoBehaviour {
   }
 
   public void Load() {
-    if(File.Exists(Application.persistentDataPath + "gamerInfo.dat")) {
+    if(File.Exists(Application.persistentDataPath + "/gamerInfo.dat")) {
       BinaryFormatter bf = new BinaryFormatter();
-      FileStream file = File.Open(Application.persistentDataPath + "gamerInfo.dat", FileMode.Open);
+      FileStream file = File.Open(Application.persistentDataPath + "/gamerInfo.dat", FileMode.Open);
 
       GameData data = (GameData) bf.Deserialize(file);
       file.Close();
