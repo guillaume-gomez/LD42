@@ -27,6 +27,11 @@ public class Player : MoveableObject {
 
     private bool stopAnimations = false;
     private bool teleporting = false;
+    // for android build
+    private int directionButton = 0;
+    private bool slideButton = false;
+    private bool jumpButton = false;
+    private bool punchButton = false;
 
     protected virtual void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -54,14 +59,17 @@ public class Player : MoveableObject {
             return;
         }
 
-        float move = Input.GetAxis("Horizontal");
+        float move = 0;
+        #if UNITY_STANDALONE || UNITY_WEBPLAYER
+            move = Input.GetAxis("Horizontal");
+        #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
+            move = (float) directionButton;
+        #endif
         if(GameManager.instance.hasInvertedInput) {
             move = -move;
         }
 
-
         Vector3 forceDirection = transform.position - center.transform.position;
-
 
         rb2D.velocity = rb2D.velocity / 1.5f;
 
@@ -109,7 +117,6 @@ public class Player : MoveableObject {
             SwitchAnimeState(0);
         else
             SwitchAnimeState(1);
-        
 
         animator.SetBool("grounded", grounded);
         animator.SetFloat ("velocityX", Mathf.Abs (move));
@@ -264,5 +271,42 @@ public class Player : MoveableObject {
             }
         }
 
+    }
+
+    // for android
+    public void LeftButton() {
+        directionButton = -1;
+    }
+
+    public void RightButton() {
+        directionButton = 1;
+    }
+
+    public void NoDirection() {
+        directionButton = 0;
+    }
+
+    public void SlideButtonUp() {
+        slideButton = false;
+    }
+
+    public void SlideButtonDown() {
+        slideButton = true;
+    }
+
+    public void JumpButtonUp() {
+        jumpButton = false;
+    }
+
+    public void JumpButtonDown() {
+        jumpButton = true;
+    }
+
+    public void PunchButtonUp() {
+        punchButton = false;
+    }
+
+    public void PunchButtonDown() {
+        punchButton = true;
     }
 }
