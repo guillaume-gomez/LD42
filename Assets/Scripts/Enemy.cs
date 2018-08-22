@@ -5,13 +5,13 @@ using UnityEngine;
 public class Enemy : MoveableObject {
 
     public float movementSpeed = 800f;
-    private GameObject center;
+    //private GameObject center;
     protected Rigidbody2D rb2D;
     protected BoxCollider2D bodyCollider;
 
 	// Use this for initialization
 	void Start () {
-        center = GameObject.FindGameObjectsWithTag("Gravity")[0];
+        //center = GameObject.FindGameObjectsWithTag("Gravity")[0];
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         bodyCollider = gameObject.GetComponent<BoxCollider2D>();
 	}
