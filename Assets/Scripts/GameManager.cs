@@ -21,6 +21,7 @@ using UnityEngine.SceneManagement;
         private LayerTypeEnum currentLayerType;
         private GameObject playerRef;
         private int nbRetry = 0;
+        private GamePersistingData gamePersistingDataScript;
 
 
         private const int nbLevels = 3;
@@ -55,6 +56,7 @@ using UnityEngine.SceneManagement;
             //boardScript = GetComponent<BoardManager>();
 
             // UNCOMMENT THOSE TWO LINES TO TEST YOUR SCENE AS STANDALONE
+            gamePersistingDataScript = GetComponent<GamePersistingData>();
             playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
             InitGame();
         }
@@ -135,11 +137,11 @@ using UnityEngine.SceneManagement;
         private void LoadNextLevel() {
             isTransiting = false;
             SoundManager.instance.PlayMusic();
-            Debug.Log("LoadNextLevel" + level);
             if(level + 1 > nbLevels) {
-                // Go back end credirs
+                // Go back end credits
                 SceneManager.LoadScene(6);
             } else {
+                gamePersistingDataScript.Save();
                 //Add one to our level number.
                 level++;
                 //hardcoded 2 represent the nb scenes before the first level
@@ -166,6 +168,7 @@ using UnityEngine.SceneManagement;
                 SoundManager.instance.StopMusic();
                 SoundManager.instance.PlaySingle(loseSound);
                 //invertedInputCanvas.SetActive(true);
+                myTimer.StopTimer();
                 playerRef.SetActive(false);
                 doingSetup = true;
                 nbRetry = nbRetry + 1;
