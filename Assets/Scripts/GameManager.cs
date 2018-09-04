@@ -24,7 +24,7 @@ using UnityEngine.SceneManagement;
         private GamePersistingData gamePersistingDataScript;
 
 
-        private const int nbLevels = 3;
+        private const int nbLevels = 4;
         private const float timerStep = 5f;
 
         public int Level {
@@ -55,10 +55,10 @@ using UnityEngine.SceneManagement;
             //Get a component reference to the attached BoardManager script
             //boardScript = GetComponent<BoardManager>();
 
-            // UNCOMMENT THOSE TWO LINES TO TEST YOUR SCENE AS STANDALONE
             gamePersistingDataScript = GetComponent<GamePersistingData>();
-            playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
-            InitGame();
+            // UNCOMMENT THOSE TWO LINES TO TEST YOUR SCENE AS STANDALONE
+            //playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
+            //InitGame();
         }
 
         void OnEnable()
@@ -74,10 +74,10 @@ using UnityEngine.SceneManagement;
         }
 
         //This is called each time a scene is loaded.
-        void  OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)//OnLevelWasLoaded(int index)
+        void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)//OnLevelWasLoaded(int index)
         {
             // hardcoded index about credit and main menu
-            if(scene.buildIndex != 0 && scene.buildIndex != 6) {
+            if(scene.buildIndex != 0 && scene.buildIndex != (nbLevels + 3)) {
                 playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
                 invertedInputCanvas = GameObject.Find("InputGlitchInfo");
                 //Call InitGame to initialize our level.
@@ -139,7 +139,7 @@ using UnityEngine.SceneManagement;
             SoundManager.instance.PlayMusic();
             if(level + 1 > nbLevels) {
                 // Go back end credits
-                SceneManager.LoadScene(6);
+                SceneManager.LoadScene(nbLevels + 3);
             } else {
                 gamePersistingDataScript.Save();
                 //Add one to our level number.
