@@ -174,10 +174,6 @@ public class Player : MoveableObject {
         }
 
         if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Laser" || collision.gameObject.tag == "CustomEnemy") {
-            if (collision.gameObject.tag == "Laser"
-                && !collision.gameObject.GetComponent<Laser>().isActive())
-                return;
-
             onDeath();
         }
     }
