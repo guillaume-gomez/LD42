@@ -27,6 +27,12 @@ public class Player : MoveableObject {
 
     private bool stopAnimations = false;
     private bool teleporting = false;
+    // for android build
+    private int directionButton = 0;
+    private bool slideButton = false;
+    private bool jumpButton = false;
+    private bool punchButton = false;
+    private float jumpVelocity = 0.0f;
 
     protected virtual void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -54,25 +60,35 @@ public class Player : MoveableObject {
             return;
         }
 
-        float move = Input.GetAxis("Horizontal");
+        float move = 0;
+        #if UNITY_STANDALONE || UNITY_WEBGL
+            move = Input.GetAxis("Horizontal");
+        #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
+            move = (float) directionButton;
+        #endif
         if(GameManager.instance.hasInvertedInput) {
             move = -move;
         }
 
-
         Vector3 forceDirection = transform.position - center.transform.position;
 
-
         rb2D.velocity = rb2D.velocity / 1.5f;
-
-        if (move != 0f && Input.GetAxis("Vertical") >= -0.8f)
+        #if UNITY_STANDALONE || UNITY_WEBGL
+            if (move != 0f && Input.GetAxis("Vertical") >= -0.8f)
+         #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
+            if(move != 0f ) //&& slideButton)
+         #endif
         {
             float moveX = move * moveSpeed * Time.deltaTime;
             Vector3 addX = transform.right * moveX;
             rb2D.AddForce(addX);
         }
-
-        if (Input.GetAxisRaw("Jump") != 0 && jumpTimer <= 0f) {
+        #if UNITY_STANDALONE || UNITY_WEBGL
+           if (Input.GetAxisRaw("Jump") != 0 && jumpTimer <= 0f)
+        #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
+            if (jumpButton && jumpTimer <= 0f)
+        #endif
+        {
             grounded = false;
             jumpTimer = jumpBaseTimer;
             SwitchAnimeState(2);
@@ -82,7 +98,12 @@ public class Player : MoveableObject {
         rb2D.AddForce(forceDirection.normalized * 1f * Time.fixedDeltaTime);
         if (jumpTimer > 0f) {
             jumpTimer -= Time.deltaTime;
-            if (Input.GetButton("Jump")) {
+            #if UNITY_STANDALONE || UNITY_WEBGL
+               if (Input.GetButton("Jump"))
+            #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
+                if(jumpButton)
+            #endif
+            {
                 grounded = false;
                 rb2D.AddForce(forceDirection.normalized * (jumpSpeed * (jumpTimer / jumpBaseTimer)) * Time.fixedDeltaTime);
             }
@@ -92,9 +113,15 @@ public class Player : MoveableObject {
             Flip();
         }
 
-        if (Input.GetButtonDown("Fire3") && atkTimer <= 0f) {
-            atkTimer = 0.3f;
-        }
+        #if UNITY_STANDALONE || UNITY_WEBGL
+           if (Input.GetButtonDown("Fire3") && atkTimer <= 0f) {
+               atkTimer = 0.3f;
+           }
+        #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
+            if (punchButton && atkTimer <= 0f) {
+                atkTimer = 0.3f;
+            }
+        #endif
 
         if (atkTimer >= 0f)
             atkTimer -= Time.deltaTime;
@@ -103,13 +130,22 @@ public class Player : MoveableObject {
             SwitchAnimeState(4);
         else if (jumpTimer > 0)
             SwitchAnimeState(2);
+        #if UNITY_STANDALONE || UNITY_WEBGL
         else if (Input.GetAxisRaw("Vertical") < 0f && grounded)
             SwitchAnimeState(3);
+        #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
+        else if(slideButton && grounded)
+            SwitchAnimeState(3);
+        #endif
+        #if UNITY_STANDALONE || UNITY_WEBGL
         else if (Input.GetAxisRaw("Horizontal") == 0f)
+           SwitchAnimeState(0);
+        #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
+        else if (directionButton == 0)
             SwitchAnimeState(0);
+        #endif
         else
             SwitchAnimeState(1);
-        
 
         animator.SetBool("grounded", grounded);
         animator.SetFloat ("velocityX", Mathf.Abs (move));
@@ -264,5 +300,47 @@ public class Player : MoveableObject {
             }
         }
 
+    }
+
+    // for android
+    public void LeftButton() {
+        directionButton = -1;
+    }
+
+    public void RightButton() {
+        directionButton = 1;
+    }
+
+    public void NoDirection() {
+        directionButton = 0;
+    }
+
+    public void SlideButtonUp() {
+        slideButton = false;
+    }
+
+    public void SlideButtonDown() {
+        slideButton = true;
+    }
+
+    public void JumpButtonUp() {
+        jumpButton = false;
+        //if(jumpVelocity > 0.01f) {
+            jumpVelocity-= 0.01f;
+        //}
+    }
+
+    public void JumpButtonDown() {
+        jumpButton = true;
+        //if(jumpVelocity < 1.0f)
+            jumpVelocity+= 0.01f;
+    }
+
+    public void PunchButtonUp() {
+        punchButton = false;
+    }
+
+    public void PunchButtonDown() {
+        punchButton = true;
     }
 }

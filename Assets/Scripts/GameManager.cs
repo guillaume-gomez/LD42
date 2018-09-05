@@ -20,12 +20,23 @@ using UnityEngine.SceneManagement;
         private CountDown myTimer;
         private LayerTypeEnum currentLayerType;
         private GameObject playerRef;
-        private GameObject camera;
         private int nbRetry = 0;
+        private GamePersistingData gamePersistingDataScript;
 
 
-        private const int nbLevels = 3;
+        private const int nbLevels = 4;
         private const float timerStep = 5f;
+
+        public int Level {
+            get
+            {
+                return instance.level;
+            }
+            set
+            {
+                instance.level = value;
+            }
+        }
 
         //Awake is always called before any Start functions
         void Awake()
@@ -44,18 +55,30 @@ using UnityEngine.SceneManagement;
             //Get a component reference to the attached BoardManager script
             //boardScript = GetComponent<BoardManager>();
 
+            gamePersistingDataScript = GetComponent<GamePersistingData>();
             // UNCOMMENT THOSE TWO LINES TO TEST YOUR SCENE AS STANDALONE
-            playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
-            InitGame();
+            //playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
+            //InitGame();
+        }
+
+        void OnEnable()
+        {
+            //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+            SceneManager.sceneLoaded += OnLevelFinishedLoading;
+        }
+
+        void OnDisable()
+        {
+            //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
+            SceneManager.sceneLoaded -= OnLevelFinishedLoading;
         }
 
         //This is called each time a scene is loaded.
-        void OnLevelWasLoaded(int index)
+        void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)//OnLevelWasLoaded(int index)
         {
             // hardcoded index about credit and main menu
-            if(index != 0 || index != 6) {
+            if(scene.buildIndex != 0 && scene.buildIndex != (nbLevels + 3)) {
                 playerRef = GameObject.FindGameObjectsWithTag("Player")[0];
-                camera = GameObject.FindGameObjectWithTag("MainCamera");
                 invertedInputCanvas = GameObject.Find("InputGlitchInfo");
                 //Call InitGame to initialize our level.
                 InitGame();
@@ -114,11 +137,11 @@ using UnityEngine.SceneManagement;
         private void LoadNextLevel() {
             isTransiting = false;
             SoundManager.instance.PlayMusic();
-            Debug.Log("LoadNextLevel" + level);
             if(level + 1 > nbLevels) {
-                // Go back end credirs
-                SceneManager.LoadScene(6);
+                // Go back end credits
+                SceneManager.LoadScene(nbLevels + 3);
             } else {
+                gamePersistingDataScript.Save();
                 //Add one to our level number.
                 level++;
                 //hardcoded 2 represent the nb scenes before the first level
@@ -145,6 +168,7 @@ using UnityEngine.SceneManagement;
                 SoundManager.instance.StopMusic();
                 SoundManager.instance.PlaySingle(loseSound);
                 //invertedInputCanvas.SetActive(true);
+                myTimer.StopTimer();
                 playerRef.SetActive(false);
                 doingSetup = true;
                 nbRetry = nbRetry + 1;
