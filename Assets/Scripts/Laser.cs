@@ -20,6 +20,7 @@ public class Laser : MonoBehaviour {
 	void Start () {
         animator = GetComponent<Animator>();
         collisions = GetComponent<BoxCollider2D>();
+        collisions.enabled = false;
     }
 
     public bool isActive() { return active; }
@@ -39,19 +40,20 @@ public class Laser : MonoBehaviour {
             {
                 animator.SetTrigger("OffToOn");
                 animator.ResetTrigger("OffToOn");
+                collisions.enabled = false;
                 state = 1;
             }
             else if (state == 2)
             {
                 animator.SetTrigger("OnToOff");
                 animator.ResetTrigger("OnToOff");
+                collisions.enabled = false;
                 state = 3;
             }
             if (activeIn >= getActiveTimer() - 0.2f && !switched)
             {
                 switched = true;
                 active = !active;
-                collisions.enabled = active;
             }
 
         }
@@ -60,11 +62,13 @@ public class Laser : MonoBehaviour {
             if (state == 1)
             {
                 animator.SetTrigger("OffToOn");
+                collisions.enabled = true;
                 state = 2;
             }
             else if (state == 3)
             {
                 animator.SetTrigger("OnToOff");
+                collisions.enabled = false;
                 state = 0;
             }
             switchIn = 0f;
