@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61953857124512660}
   - component: {fileID: 50912698122279936}
   - component: {fileID: 114550529713760448}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyGreedy
   m_TagString: CustomEnemy
   m_Icon: {fileID: 0}

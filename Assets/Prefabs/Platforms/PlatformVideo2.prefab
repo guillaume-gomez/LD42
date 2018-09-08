@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114641588574985386}
   - component: {fileID: 212608718599367402}
   - component: {fileID: 61024897240781106}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformVideo2
   m_TagString: Crate
   m_Icon: {fileID: 0}

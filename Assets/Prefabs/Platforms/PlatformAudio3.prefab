@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114953577294058556}
   - component: {fileID: 212366931146308962}
   - component: {fileID: 61807180067111916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformAudio3
   m_TagString: Crate
   m_Icon: {fileID: 0}

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 212672538228426432}
   - component: {fileID: 61735441950776076}
   - component: {fileID: 95545304281908270}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformInputBreakable
   m_TagString: Crate
   m_Icon: {fileID: 0}

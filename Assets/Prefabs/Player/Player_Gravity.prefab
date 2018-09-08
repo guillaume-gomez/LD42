@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114727347423513628}
   - component: {fileID: 114655386663691466}
   - component: {fileID: 114354371573745248}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: SlideButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114039632013810678}
   - component: {fileID: 114806445257862884}
   - component: {fileID: 114359575664603362}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: PunchButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 114117962666040640}
   - component: {fileID: 114427064331605498}
   - component: {fileID: 114573017947077772}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: JumpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 224609235977659716}
   - component: {fileID: 222674031135622536}
   - component: {fileID: 114264232016722868}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 114405393881643474}
   - component: {fileID: 114800877391680152}
   - component: {fileID: 114784897828463658}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: RightButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 58388746108857532}
   - component: {fileID: 70844914006950614}
   - component: {fileID: 70190485442211438}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player_Gravity
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 224997641476970900}
   - component: {fileID: 222355511035781784}
   - component: {fileID: 114253667166332164}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 224034475736294986}
   - component: {fileID: 222098606726839650}
   - component: {fileID: 114510984674484002}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 224477244500433484}
   - component: {fileID: 222432970126605660}
   - component: {fileID: 114538843898540522}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 114853825055196420}
   - component: {fileID: 114026133688705988}
   - component: {fileID: 114726048283527968}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: LeftButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 223838662166399602}
   - component: {fileID: 114147257202271506}
   - component: {fileID: 114205999060269010}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 224195370957318626}
   - component: {fileID: 222639143401372716}
   - component: {fileID: 114445057741601238}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
