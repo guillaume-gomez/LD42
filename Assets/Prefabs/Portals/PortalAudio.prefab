@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212733295288215286}
   - component: {fileID: 61126693178726970}
   - component: {fileID: 114362411398216594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PortalAudio
   m_TagString: Portal
   m_Icon: {fileID: 0}

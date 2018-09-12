@@ -24,7 +24,7 @@ using UnityEngine.SceneManagement;
         private GamePersistingData gamePersistingDataScript;
 
 
-        private const int nbLevels = 4;
+        private const int nbLevels = 5;
         private const float timerStep = 5f;
 
         public int Level {
