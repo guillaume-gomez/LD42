@@ -2458,12 +2458,12 @@ Prefab:
     - target: {fileID: 114822680913575058, guid: e41576d56ecdabd4f827070419a4d077,
         type: 2}
       propertyPath: activationTime
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114822680913575058, guid: e41576d56ecdabd4f827070419a4d077,
         type: 2}
       propertyPath: deactivationTime
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1337981466708772, guid: e41576d56ecdabd4f827070419a4d077, type: 2}
       propertyPath: m_IsActive
@@ -3176,12 +3176,12 @@ Prefab:
     - target: {fileID: 114822680913575058, guid: e41576d56ecdabd4f827070419a4d077,
         type: 2}
       propertyPath: activationTime
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114822680913575058, guid: e41576d56ecdabd4f827070419a4d077,
         type: 2}
       propertyPath: deactivationTime
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1337981466708772, guid: e41576d56ecdabd4f827070419a4d077, type: 2}
       propertyPath: m_IsActive
