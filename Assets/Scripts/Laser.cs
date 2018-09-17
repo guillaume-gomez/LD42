@@ -47,7 +47,8 @@ public class Laser : MonoBehaviour {
             {
                 animator.SetTrigger("OnToOff");
                 animator.ResetTrigger("OnToOff");
-                collisions.enabled = false;
+                // take account to keep enabled colission during this period
+                collisions.enabled = true;
                 state = 3;
             }
             if (activeIn >= getActiveTimer() - 0.2f && !switched)
