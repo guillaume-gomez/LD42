@@ -307,8 +307,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.002759993, y: -0.02843344}
-  m_Size: {x: 0.1, y: 0.5}
+  m_Offset: {x: -0.002759993, y: 0.06}
+  m_Size: {x: 0.2, y: 0.6}
   m_Direction: 0
 --- !u!95 &95212643231104436
 Animator:
@@ -546,6 +546,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ba273bb5035419541ac4313dc933cfd5, type: 3}
   - {fileID: 8300000, guid: d0b5070dd89bdeb45affefe3e88296c9, type: 3}
   - {fileID: 8300000, guid: 17fcc768faad46f46900c17cd17d52ef, type: 3}
+  bodyColliderVer: {fileID: 70844914006950614}
+  bodyColliderHor: {fileID: 70190485442211438}
   animeState: 0
 --- !u!114 &114354371573745248
 MonoBehaviour:
