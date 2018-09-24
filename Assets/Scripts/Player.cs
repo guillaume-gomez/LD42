@@ -19,8 +19,8 @@ public class Player : MoveableObject {
     protected SpriteRenderer spriteRenderer;
     protected Rigidbody2D rb2D;
     protected CircleCollider2D footCollider;
-    protected CapsuleCollider2D bodyColliderVer;
-    protected CapsuleCollider2D bodyColliderHor;
+    public CapsuleCollider2D bodyColliderVer;
+    public CapsuleCollider2D bodyColliderHor;
     public int animeState = 0; //IDLE /RUN /JUMP /SLIDE /PUNCH
     protected float distToCenter = 0;
     protected float atkTimer = 0f;
@@ -39,13 +39,6 @@ public class Player : MoveableObject {
         animator = GetComponent<Animator>();
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         footCollider = this.GetComponent<CircleCollider2D>();
-        CapsuleCollider2D[] colliders = this.GetComponents<CapsuleCollider2D>();
-        foreach(CapsuleCollider2D cap in colliders) {
-            if (cap.direction.Equals(CapsuleDirection2D.Horizontal))
-                bodyColliderHor = cap;
-            else
-                bodyColliderVer = cap;
-        }
     }
 
     void Start () {
@@ -214,7 +207,7 @@ public class Player : MoveableObject {
         stopAnimations = true;
 
         rb2D.velocity = new Vector2(0f, 0f);
-        Invoke("onPortalEnd", 0.6f);
+        Invoke("onPortalEnd", 0.10f);
     }
 
     void SwitchAnimeState(int change) {
@@ -246,8 +239,8 @@ public class Player : MoveableObject {
                     bodyColliderVer.enabled = true;
                     bodyColliderHor.enabled = false;
 
-                    bodyColliderVer.offset.Set(0.08f, 0.05f);
-                    bodyColliderVer.size.Set(0.2f, 0.3f);
+                    bodyColliderVer.offset.Set(0.02f, 0.05f);
+                    bodyColliderVer.size.Set(0.5f, 0.5f);
                     footCollider.offset.Set(0.08f, 0.01f);
                     break;
 
@@ -257,7 +250,7 @@ public class Player : MoveableObject {
                     bodyColliderHor.enabled = true;
 
                     bodyColliderHor.offset.Set(0f, -0.3f);
-                    bodyColliderHor.size.Set(0.6f, 0.1f);
+                    bodyColliderHor.size.Set(0.72f, 0.18f);
                     footCollider.offset.Set(0f, -0.3213656f);
                     break;
 
@@ -268,8 +261,8 @@ public class Player : MoveableObject {
                         bodyColliderVer.enabled = false;
                         bodyColliderHor.enabled = true;
 
-                        bodyColliderHor.offset.Set(0.1f, -0.1f);
-                        bodyColliderHor.size.Set(0.6f, 0.3f);
+                        bodyColliderHor.offset.Set(0.12f, -0.06f);
+                        bodyColliderHor.size.Set(0.6f, 0.1f);
                         footCollider.offset.Set(0f, -0.3213656f);
 
                     }
@@ -278,8 +271,8 @@ public class Player : MoveableObject {
                         bodyColliderVer.enabled = true;
                         bodyColliderHor.enabled = false;
 
-                        bodyColliderVer.offset.Set(0.05f, 0f);
-                        bodyColliderVer.size.Set(0.3f, 0.5f);
+                        bodyColliderVer.offset.Set(0.06f, 0.05f);
+                        bodyColliderVer.size.Set(0.4f, 0.1f);
                         footCollider.offset.Set(0f, -0.3213656f);
                     }
                     break;
