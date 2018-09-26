@@ -48,8 +48,13 @@ public class Player : MoveableObject {
     void FixedUpdate() {
         float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
         distToCenter = newDist;
+        if (!CanMove()) {
+            return;
+        }
 
-        if (!CanMove() || teleporting) {
+        if(teleporting) {
+            //to keep colission during the teleportation with the new layer
+            rb2D.velocity = rb2D.velocity / 1.5f;
             return;
         }
 
@@ -64,8 +69,8 @@ public class Player : MoveableObject {
         }
 
         Vector3 forceDirection = transform.position - center.transform.position;
-
         rb2D.velocity = rb2D.velocity / 1.5f;
+
         #if UNITY_STANDALONE || UNITY_WEBGL
             if (move != 0f && Input.GetAxis("Vertical") >= -0.8f)
          #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
@@ -89,6 +94,8 @@ public class Player : MoveableObject {
         }
 
         rb2D.AddForce(forceDirection.normalized * 1f * Time.fixedDeltaTime);
+
+
         if (jumpTimer > 0f) {
             jumpTimer -= Time.deltaTime;
             #if UNITY_STANDALONE || UNITY_WEBGL
@@ -101,6 +108,7 @@ public class Player : MoveableObject {
                 rb2D.AddForce(forceDirection.normalized * (jumpSpeed * (jumpTimer / jumpBaseTimer)) * Time.fixedDeltaTime);
             }
         }
+
 
         if (move > 0 && !facingRight || move < 0 && facingRight) {
             Flip();
@@ -196,6 +204,7 @@ public class Player : MoveableObject {
 
     public void onPortalEnd()
     {
+        //Debug.Break();
         animator.Play("IdlePlayer");
         teleporting = false;
         stopAnimations = false;
@@ -207,7 +216,7 @@ public class Player : MoveableObject {
         stopAnimations = true;
 
         rb2D.velocity = new Vector2(0f, 0f);
-        Invoke("onPortalEnd", 0.10f);
+        Invoke("onPortalEnd", 0.6f);
     }
 
     void SwitchAnimeState(int change) {
