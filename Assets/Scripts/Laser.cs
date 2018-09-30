@@ -31,6 +31,10 @@ public class Laser : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if(GameManager.instance.doingSetup) {
+            return;
+        }
+
         switchIn += Time.deltaTime;
         activeIn = switchIn;
 
