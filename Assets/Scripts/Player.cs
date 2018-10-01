@@ -19,8 +19,8 @@ public class Player : MoveableObject {
     protected SpriteRenderer spriteRenderer;
     protected Rigidbody2D rb2D;
     protected CircleCollider2D footCollider;
-    protected CapsuleCollider2D bodyColliderVer;
-    protected CapsuleCollider2D bodyColliderHor;
+    public CapsuleCollider2D bodyColliderVer;
+    public CapsuleCollider2D bodyColliderHor;
     public int animeState = 0; //IDLE /RUN /JUMP /SLIDE /PUNCH
     protected float distToCenter = 0;
     protected float atkTimer = 0f;
@@ -39,13 +39,6 @@ public class Player : MoveableObject {
         animator = GetComponent<Animator>();
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         footCollider = this.GetComponent<CircleCollider2D>();
-        CapsuleCollider2D[] colliders = this.GetComponents<CapsuleCollider2D>();
-        foreach(CapsuleCollider2D cap in colliders) {
-            if (cap.direction.Equals(CapsuleDirection2D.Horizontal))
-                bodyColliderHor = cap;
-            else
-                bodyColliderVer = cap;
-        }
     }
 
     void Start () {
@@ -55,8 +48,13 @@ public class Player : MoveableObject {
     void FixedUpdate() {
         float newDist = (Mathf.Round(Vector3.Distance(center.transform.position, transform.position) * 10)) / 10f;
         distToCenter = newDist;
+        if (!CanMove()) {
+            return;
+        }
 
-        if (!CanMove() || teleporting) {
+        if(teleporting) {
+            //to keep colission during the teleportation with the new layer
+            rb2D.velocity = rb2D.velocity / 1.5f;
             return;
         }
 
@@ -71,8 +69,8 @@ public class Player : MoveableObject {
         }
 
         Vector3 forceDirection = transform.position - center.transform.position;
-
         rb2D.velocity = rb2D.velocity / 1.5f;
+
         #if UNITY_STANDALONE || UNITY_WEBGL
             if (move != 0f && Input.GetAxis("Vertical") >= -0.8f)
          #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
@@ -96,6 +94,8 @@ public class Player : MoveableObject {
         }
 
         rb2D.AddForce(forceDirection.normalized * 1f * Time.fixedDeltaTime);
+
+
         if (jumpTimer > 0f) {
             jumpTimer -= Time.deltaTime;
             #if UNITY_STANDALONE || UNITY_WEBGL
@@ -108,6 +108,7 @@ public class Player : MoveableObject {
                 rb2D.AddForce(forceDirection.normalized * (jumpSpeed * (jumpTimer / jumpBaseTimer)) * Time.fixedDeltaTime);
             }
         }
+
 
         if (move > 0 && !facingRight || move < 0 && facingRight) {
             Flip();
@@ -203,6 +204,7 @@ public class Player : MoveableObject {
 
     public void onPortalEnd()
     {
+        //Debug.Break();
         animator.Play("IdlePlayer");
         teleporting = false;
         stopAnimations = false;
@@ -246,8 +248,8 @@ public class Player : MoveableObject {
                     bodyColliderVer.enabled = true;
                     bodyColliderHor.enabled = false;
 
-                    bodyColliderVer.offset.Set(0.08f, 0.05f);
-                    bodyColliderVer.size.Set(0.2f, 0.3f);
+                    bodyColliderVer.offset.Set(0.02f, 0.05f);
+                    bodyColliderVer.size.Set(0.5f, 0.5f);
                     footCollider.offset.Set(0.08f, 0.01f);
                     break;
 
@@ -257,7 +259,7 @@ public class Player : MoveableObject {
                     bodyColliderHor.enabled = true;
 
                     bodyColliderHor.offset.Set(0f, -0.3f);
-                    bodyColliderHor.size.Set(0.6f, 0.1f);
+                    bodyColliderHor.size.Set(0.72f, 0.18f);
                     footCollider.offset.Set(0f, -0.3213656f);
                     break;
 
@@ -268,8 +270,8 @@ public class Player : MoveableObject {
                         bodyColliderVer.enabled = false;
                         bodyColliderHor.enabled = true;
 
-                        bodyColliderHor.offset.Set(0.1f, -0.1f);
-                        bodyColliderHor.size.Set(0.6f, 0.3f);
+                        bodyColliderHor.offset.Set(0.12f, -0.06f);
+                        bodyColliderHor.size.Set(0.6f, 0.1f);
                         footCollider.offset.Set(0f, -0.3213656f);
 
                     }
@@ -278,8 +280,8 @@ public class Player : MoveableObject {
                         bodyColliderVer.enabled = true;
                         bodyColliderHor.enabled = false;
 
-                        bodyColliderVer.offset.Set(0.05f, 0f);
-                        bodyColliderVer.size.Set(0.3f, 0.5f);
+                        bodyColliderVer.offset.Set(0.06f, 0.05f);
+                        bodyColliderVer.size.Set(0.4f, 0.1f);
                         footCollider.offset.Set(0f, -0.3213656f);
                     }
                     break;

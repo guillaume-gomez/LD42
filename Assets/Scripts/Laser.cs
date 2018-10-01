@@ -31,6 +31,10 @@ public class Laser : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if(GameManager.instance.doingSetup) {
+            return;
+        }
+
         switchIn += Time.deltaTime;
         activeIn = switchIn;
 
@@ -47,7 +51,8 @@ public class Laser : MonoBehaviour {
             {
                 animator.SetTrigger("OnToOff");
                 animator.ResetTrigger("OnToOff");
-                collisions.enabled = false;
+                // take account to keep enabled colission during this period
+                collisions.enabled = true;
                 state = 3;
             }
             if (activeIn >= getActiveTimer() - 0.2f && !switched)

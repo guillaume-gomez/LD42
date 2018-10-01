@@ -21,10 +21,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Item
+  - Layer
   - 
   - 
   - 
@@ -46,6 +46,39 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackgroundImage
+    uniqueID: 2298405039
+    locked: 0
+  - name: Layer10
+    uniqueID: 1769041403
+    locked: 0
+  - name: Layer9
+    uniqueID: 2507123375
+    locked: 0
+  - name: Layer8
+    uniqueID: 670393115
+    locked: 0
+  - name: Layer7
+    uniqueID: 251201137
+    locked: 0
+  - name: Layer6
+    uniqueID: 3964516341
+    locked: 0
+  - name: Layer5
+    uniqueID: 3375390327
+    locked: 0
+  - name: Layer4
+    uniqueID: 611124283
+    locked: 0
+  - name: Layer3
+    uniqueID: 4222230871
+    locked: 0
+  - name: Layer2
+    uniqueID: 469803681
+    locked: 0
+  - name: Layer1
+    uniqueID: 3925163487
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
