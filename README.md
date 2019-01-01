@@ -49,7 +49,6 @@ It was all an adventure for 4 of the 5 devs who had never used Unity before, but
 | Victor Goya | Programming |
 | Terence Toussaint | Sound Design |
 
-# Results
 
 ![ranking](ranking.png)
 
