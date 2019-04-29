@@ -50,6 +50,7 @@ It was all an adventure for 4 of the 5 devs who had never used Unity before, but
 | Terence Toussaint | Sound Design |
 
 
+2017 entries
 ![ranking](ranking.png)
 
 [Link to ludum dare page](https://ldjam.com/events/ludum-dare/42/defrag-3)
