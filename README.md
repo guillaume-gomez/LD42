@@ -33,6 +33,9 @@ It was all an adventure for 4 of the 5 devs who had never used Unity before, but
 | Slide | Down Arrow |
 | Attack | Space |
 
+![Online LD version](https://guillaume-gomez.github.io/LD42/Build/)
+
+![Online Post Mortem version](https://guillaume-gomez.github.io/LD42/PostMortemBuild/)
 
 # Team
 
